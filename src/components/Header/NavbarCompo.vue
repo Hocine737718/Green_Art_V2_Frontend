@@ -6,25 +6,25 @@
         <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
                 <li class="nav_item">
-                    <a href="#home" class="nav_link">
+                    <router-link :to="{ name: 'acceuil' }" class="nav_link">
                         Acceuil
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav_item">
-                    <a href="#products" class="nav_link">
+                    <router-link :to="{ name: 'produits' }" class="nav_link">
                         Produits
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav_item">
-                    <a href="#contact" class="nav_link">
+                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
                         Contactez-nous
-                    </a>
+                    </router-link>
                 </li>
-                <li class="nav_item">
-                    <a href="#login" class="nav_link">
+                <!--li class="nav_item">
+                    <router-link :to="{ name: 'se-connecter' }" class="nav_link">
                        Se Connecter
-                    </a>
-                </li>
+                    </router-link>
+                </li-->
             </ul>
             <div class="nav_close" id="nav-close">
                 <i class="ri-close-line nav_icon"></i>
