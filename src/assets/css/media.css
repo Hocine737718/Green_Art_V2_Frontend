@@ -133,6 +133,16 @@
         row-gap: 2rem;
         font-size: var(--h3-font-size);;
     }
+    .login, .signup  {
+        justify-content: center;
+    }
+    .login_form, .signup_form {
+        width: 390px;
+        padding-inline: 2.5rem;
+    }
+    .login_title,.signup_title {
+        margin-bottom: 2rem;
+    }
 }
 @media (max-width: 549px){
     :root {
@@ -199,6 +209,10 @@
     }
     .copyright_text {
         font-size: var(--normal-font-size);
+    }
+    .login_form, .signup_form {
+        width: 300px;
+        padding-inline: 1.5rem;
     }
 }
 @media (max-width: 365px){

@@ -20,11 +20,11 @@
                         Contactez-nous
                     </router-link>
                 </li>
-                <!--li class="nav_item">
-                    <router-link :to="{ name: 'se-connecter' }" class="nav_link">
+                <li class="nav_item">
+                    <router-link :to="{ name: 'login' }" class="nav_link">
                        Se Connecter
                     </router-link>
-                </li-->
+                </li>
             </ul>
             <div class="nav_close" id="nav-close">
                 <i class="ri-close-line nav_icon"></i>
