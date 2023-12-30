@@ -26,7 +26,7 @@ function script(){
         localStorage.setItem('selected-icon', getCurrentIcon());
     })
 
-    /*
+    
     //Pour Avoir une relation entre Navbar et la Section actuel
     const sections = document.querySelectorAll('section[id]');//Tous les <section> du document qui ont un attribut id. 
     function scrollActive(){
@@ -48,8 +48,7 @@ function script(){
         })
     }
     window.addEventListener('scroll', scrollActive);
-    */
-   
+    
     /*
     const sr = ScrollReveal({
         origin: 'top',
@@ -64,7 +63,7 @@ function script(){
     sr.reveal(`.contact_form`,{origin: 'right'});
     sr.reveal(`.product_card, .footer`,{interval: 100});
     */
-
+   
     const navMenu = document.getElementById('nav-menu'),
         navToggle = document.getElementById('nav-toggle'),
         navClose = document.getElementById('nav-close');

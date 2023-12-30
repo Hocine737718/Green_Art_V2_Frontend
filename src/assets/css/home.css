@@ -1,0 +1,64 @@
+.home{
+    padding: 7rem 0 5rem;
+}
+.home_container{
+    position: relative;
+    row-gap: 2rem;/*avec cette propriété, vous pouvez définir l'espacement vertical entre les lignes de la grille.*/
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr); /*Définit la largeur des colonnes dans la grille. Dans cet exemple, il y a 2 colonnes, 
+    1fr signifie que chaque colonne prendra une fraction égale de l'espace disponible, assurant ainsi que 
+    les deux colonnes ont la même largeur.*/
+}
+.home_img{
+    width: 350px;
+    order: 1; /*est utilisée pour définir l'ordre d'apparition d'un élément lorsqu'il est affiché 
+    dans un conteneur de type flexbox ou un conteneur de grille */
+    justify-self: center; /* La propriété justify-self contrôle l'alignement horizontal d'un élément individuel à l'intérieur de 
+    la grille, tandis que justify-content sur le conteneur de grille contrôle l'alignement horizontal de tous les éléments de 
+    la grille.*/
+}
+.home_data{
+    text-align: center;
+}
+.home_title{
+    font-size: var(--big-font-size);
+    line-height: 140%;/*Cette ligne de code indique que le texte à l'intérieur de l'élément avec la classe .home_title 
+    aura une hauteur de ligne égale à 140% de la taille de la police. La hauteur de ligne affecte l'espacement vertical 
+    entre les lignes de texte.*/
+    margin-bottom: var(--mb-1);
+}
+.home_description{
+    margin-bottom: var(--mb-2-5);
+}
+.home_social{
+    position: absolute;
+    top: 30%;
+    right: -3rem;
+    display: grid;
+    justify-items: center;
+    row-gap: 3rem;
+}
+.home_social-follow{
+    font-weight: var(--font-medium);
+    font-size: var(--small-font-size);
+    color: #000;
+    position: relative;
+    transform: rotate(90deg);
+}
+.home_social-links{
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: .25rem;
+}
+.home_social-link{
+    font-size: 1.15rem;
+    color: #000;
+    transition: .3s;
+}
+.home_social-link:hover{
+    transform: translateX(.25rem);
+}
+.home small{
+    font-size: var(--h1-font-size);
+    color: hsl(155, 78%, 31%);
+}
