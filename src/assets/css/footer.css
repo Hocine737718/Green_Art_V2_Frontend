@@ -1,0 +1,23 @@
+.footer{
+    background-color: var(--container-color);
+}
+.footer_container{
+    width: 100%;
+    height:var(--navbar-height);
+    padding-right: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+}
+.footer_data{
+    margin :auto;
+}
+.copyright_text{
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    display: block;
+    text-align: center;
+}
+.copyright_text a{
+    color: blue;
+}

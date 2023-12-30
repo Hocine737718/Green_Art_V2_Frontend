@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav_item">
                     <a href="#login" class="nav_link">
-                       Se Conecter
+                       Se Connecter
                     </a>
                 </li>
             </ul>
