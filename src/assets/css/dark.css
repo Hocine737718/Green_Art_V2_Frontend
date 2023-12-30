@@ -1,0 +1,12 @@
+body.dark-theme{
+    --first-color: #000;
+    --first-color-alt: #FFF;
+    --title-color: hsl(var(--hue), 4%, 95%);
+    --text-color: hsl(var(--hue), 4%, 1%);
+    --body-color: hsl(var(--hue), 8%, 12%);
+    --container-color: hsl(var(--hue), 78%, 55%);
+    --background-img: url('../img/background/dark.png');
+}
+.dark-theme .product_circle{
+    background-color: var(--container-color);
+}

@@ -1,0 +1,129 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* Variables */
+:root{
+    --navbar-height: 68px;
+    --background-img: url('../img/background/light.png');
+
+    /* Conatiner CSS */
+    --max-width-container: 992px;
+    --mrg-l-container:auto;
+    --mrg-r-container:auto;
+
+    /* Colors */
+    /* Color mode HSL(hue, saturation, lightness) */
+    --hue: 155;
+    --first-color: hsl(var(--hue), 78%, 31%);
+    --first-color-alt: hsl(var(--hue), 78%, 22%);
+    --first-color-light: hsl(var(--hue), 78%, 55%);
+    --first-color-lighten: hsl(var(--hue), 78%, 70%);
+    --title-color: hsl(var(--hue), 4%, 15%);
+    --text-color: hsl(var(--hue), 0%, 0%);
+    --text-color-light: hsl(var(--hue), 0%, 50%);
+    --container-color: #FFF;
+
+    /* Font and typography */
+    --body-font: 'Poppins', sans-serif;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+
+    /* Font weight */
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /* Margenes Bottom */
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+
+    /* z index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+/* Générale */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+    /*
+        Lorsque vous faites défiler la page vers le haut ou le bas, au lieu d'un défilement instantané et abrupt, 
+    il y aura une transition en douceur vers la nouvelle position de défilement. 
+    */
+}
+body,
+button,
+input,
+textarea{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+body{
+    margin: var(--navbar-height) 0 0 0;
+    color: var(--text-color);
+    transition: .4s; /*Pour le changement light/dark mode*/
+    background-image: var(--background-img);
+    background-size: cover;
+    background-position: center;
+}
+button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+h1,h2,h3{
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+.main{
+    overflow: hidden; /*pour l'animation*/
+}
+/* Réutilisable CSS Classes */
+.container{
+    max-width: var(--max-width-container);
+    margin-left: var(--mrg-l-container);
+    margin-right: var(--mrg-r-container);
+}
+.grid{
+    display: grid;
+    /*
+    La propriété CSS display: grid; est utilisée pour déclarer un conteneur en tant que conteneur de grille. 
+    Lorsque cette propriété est appliquée à un élément, tous ses enfants directs deviennent des éléments de la grille, 
+    et vous pouvez organiser ces éléments en lignes et colonnes.
+    */
+}
+.section{
+    padding: 7rem 0 1rem;
+}
+.section_title{
+    font-size: var(--h1-font-size);
+}
+.section_title-center {
+    font-size: var(--h1-font-size);
+    text-align: center;
+    margin-bottom: var(--mb-2);
+    line-height: 140%;
+}
+.show-menu{
+    right: 0!important;
+}
