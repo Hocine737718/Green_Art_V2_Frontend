@@ -66,8 +66,9 @@ $(document).ready(function(){
     sr.reveal(`.home_social`, {delay: 600});
     sr.reveal(`.contact_box`,{origin: 'left'});
     sr.reveal(`.contact_form`,{origin: 'right'});
-    sr.reveal(`.product_card, .footer`,{interval: 100});
-   
+    /*sr.reveal(`.product_card, .footer`,{interval: 100});*/
+    sr.reveal(`.product_card, .login_form, .signup_form`,{interval: 100});
+
     const navMenu = $('#nav-menu'),
         navToggle = $('#nav-toggle'),
         navClose = $('#nav-close');

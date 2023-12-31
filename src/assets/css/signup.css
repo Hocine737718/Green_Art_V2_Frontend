@@ -10,7 +10,7 @@
   position: relative;
   margin-inline: 1.5rem;
   background-color: hsla(0, 0%, 100%, .01);
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  border: 1px solid var(--border-color);
   padding: 2.5rem 1rem;
   color: var(--text-color);
   border-radius: 1rem;
@@ -33,7 +33,7 @@
   grid-template-columns: 1fr max-content;
   column-gap: .75rem;
   align-items: center;
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  border: 2px solid var(--border-color);
   padding-inline: 1.25rem;
   border-radius: 4rem;
 }
@@ -54,37 +54,31 @@
 .signup_box i {
   font-size: 1.25rem;
 }
-.signup_forgot_container {
+.signup_return_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
   font-size: var(--small-font-size);
 }
-.signup_forgot {
-  color: var(--text-color);
+.signup_return {
+  font-size: var(--small-font-size);
+  text-align: center;
 }
-.signup_forgot:hover {
+.signup_return a{
+  color: var(--text-color);
+  font-weight: 500;
+}
+.signup_return:hover {
   text-decoration: underline;
 }
 .signup_button {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--container-color);
+  background-color: hsl(var(--hue), 78%, 55%);
   border-radius: 4rem;
   color: var(--text-color);
   font-weight: 500;
   cursor: pointer;
-}
-.signup_register {
-  font-size: var(--small-font-size);
-  text-align: center;
-}
-.signup_register a {
-  color: var(--text-color);
-  font-weight: 500;
-}
-.signup_register a:hover {
-  text-decoration: underline;
 }

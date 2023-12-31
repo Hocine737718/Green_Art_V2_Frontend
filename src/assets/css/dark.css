@@ -3,6 +3,8 @@ body.dark-theme{
     --first-color-alt: #FFF;
     --title-color: hsl(var(--hue), 4%, 95%);
     --text-color: hsl(var(--hue), 4%, 1%);
+    --border-color: hsl(var(--hue), 0%, 100%);
+
     --body-color: hsl(var(--hue), 8%, 12%);
     --container-color: hsl(var(--hue), 78%, 55%);
     --background-img: url('../img/background/dark.png');

@@ -1,7 +1,7 @@
 <template>
     <div class="login" id="login">
         <form action="" class="login_form">
-            <h1 class="login_title">Se Connecter</h1>
+            <h1 class="login_title">Connexion</h1>
             <div class="login_inputs">
                 <div class="login_box">
                     <input type="email" placeholder="Email" required class="login_input" name="email">

@@ -1,7 +1,7 @@
 <template>
     <div class="signup" id="signup">
         <form action="" class="signup_form">
-            <h1 class="signup_title">S'inscrir</h1>
+            <h1 class="signup_title">Inscription</h1>
             <div class="signup_inputs">
                 <div class="signup_box">
                     <input type="text" placeholder="Nom Complet" required class="signup_input" name="nom">
@@ -21,6 +21,9 @@
                 </div>
             </div>
             <button type="submit" class="signup_button">S'inscrir</button>
+            <div class="signup_return">
+                <router-link :to="{ name: 'login'}">Retour vers la page de connexion.</router-link>
+            </div>
         </form>
     </div>
 </template>
