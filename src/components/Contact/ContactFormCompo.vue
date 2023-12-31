@@ -1,5 +1,5 @@
 <template>
-  <form action="mail.php" method="POST" class="contact_form">
+  <form action="http://localhost:80/server/Djennat_Green_Art/v2/php/mail.php" method="POST" class="contact_form">
     <h2 class="section_title-center">
       Contactez-nous
     </h2>
