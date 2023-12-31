@@ -1,28 +1,28 @@
 <template>
     <nav class="nav container">
-        <a href="#" id="logo">
+        <router-link :to="{ name: 'acceuil' }" id="logo">
             <img src="../../assets/img/logo.png" alt="logo">
-        </a>
+        </router-link>
         <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
                 <li class="nav_item">
-                    <router-link :to="{ name: 'acceuil' }" class="nav_link" id="nav_home">
-                        Acceuil
+                    <router-link :to="{ name: 'acceuil' }" class="nav_link">
+                        <span data-hover="Acceuil">Acceuil</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'produits' }" class="nav_link" id="nav_products">
-                        Produits
+                    <router-link :to="{ name: 'produits' }" class="nav_link">
+                        <span data-hover="Produits">Produits</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link" id="nav_contact">
-                        Contactez-nous
+                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
+                        <span data-hover="Contactez-nous">Contactez-nous</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'login' }" class="nav_link" id="nav_login">
-                       Se Connecter
+                    <router-link :to="{ name: 'login' }" class="nav_link">
+                       <span data-hover="Se Connecter">Se Connecter</span>
                     </router-link>
                 </li>
             </ul>

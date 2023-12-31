@@ -27,33 +27,7 @@ $(document).ready(function(){
         // Nous sauvegardons le thème et l'icône actuelle que l'utilisateur a choisie.
         localStorage.setItem('selected-theme', getCurrentTheme());
         localStorage.setItem('selected-icon', getCurrentIcon());
-    });
-
-    //Pour Avoir une relation entre Navbar et la Section actuel
-    const sections = $('section[id]');//Tous les <section> du document qui ont un attribut id. 
-    function scrollActive(){
-        //Récupérer la position de défilement verticale de la fenêtre
-        const scrollY = window.pageYOffset;
-        sections.each(function() {//pour chaque section
-            const sectionHeight =$(this).outerHeight(),//Récupérer la hauteur de la section
-                sectionTop =$(this).offset().top - 68,//Récupérer la position de la section par rapport au haut de la page, avec un décalage de 68 pixels (navbar) 
-                sectionId =$(this).attr('id'),//Récupérer l'attribut 'id' de la section
-                navId="nav_"+sectionId;
-            //Vérifier si la position de défilement est à l'intérieur de la section courante
-            console.log('id*='+navId);
-            if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-                //Si c'est le cas, ajouter la classe 'active-link' à l'élément de menu correspondant
-                $('a[id*='+navId+']').addClass('active-link');
-            }
-            else{
-                //Sinon, supprimer la classe 'active-link' de l'élément de menu correspondant
-                $('a[id*='+navId+']').removeClass('active-link');
-            }
-        })
-    }
-    $(window).scroll(scrollActive);
-
-    
+    });    
 
     const sr = ScrollReveal({
         origin: 'top',

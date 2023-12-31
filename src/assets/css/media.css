@@ -212,14 +212,13 @@
     }
     .login_form, .signup_form {
         width: 300px;
-        padding-inline: 1.5rem;
+        padding-inline: 2rem;
     }
 }
 @media (max-width: 365px){
     :root {
         --max-width-container: 272px;
         --big-font-size: 2rem;
-        --navbar-height: 60px;
     }
     #logo img{
         max-width: 80%;
@@ -245,5 +244,15 @@
         width: 150px;
         height: 150px;
         left:20%;
+    }
+}
+@media (min-height: 370px){
+    .home, .login{
+        height: calc(100vh - 136px);
+    }
+}
+@media (min-height: 713px){
+    .contact, .signup{
+        height: calc(100vh - 136px);
     }
 }

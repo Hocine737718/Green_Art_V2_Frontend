@@ -1,9 +1,8 @@
 .login {
   position: relative;
-  height: 100vh;
   display: grid;
   align-items: center;
-  width: 70vw;
+  max-width: var(--max-width-container);
   margin: auto;
 }
 .login_form {
