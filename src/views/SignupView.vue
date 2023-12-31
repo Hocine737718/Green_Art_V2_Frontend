@@ -1,5 +1,5 @@
 <template>
-    <div class="signup" >
+    <div class="signup" id="signup">
         <form action="" class="signup_form">
             <h1 class="signup_title">S'inscrir</h1>
             <div class="signup_inputs">

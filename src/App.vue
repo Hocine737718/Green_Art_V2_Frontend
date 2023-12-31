@@ -13,12 +13,8 @@
 <script>
 import Navbar from './components/Header/NavbarCompo.vue';
 import Footer from './components/FooterCompo.vue';
-import script from './assets/js/mon-script.js';
 export default {
-  components: { Navbar, Footer },
-  mounted(){
-    script();
-  }
+  components: { Navbar, Footer }
 }
 </script>
 
