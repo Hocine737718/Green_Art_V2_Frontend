@@ -1,6 +1,6 @@
 <template>
-    <div class="signup" id="signup">
-        <form action="" class="signup_form">
+    <section class="signup section container" id="signup">
+        <form action="" class="signup_container grid">
             <h1 class="signup_title">Inscription</h1>
             <div class="signup_inputs">
                 <div class="signup_box">
@@ -25,7 +25,7 @@
                 <router-link :to="{ name: 'login'}">Retour vers la page de connexion.</router-link>
             </div>
         </form>
-    </div>
+    </section>
 </template>
 <script>
 export default {

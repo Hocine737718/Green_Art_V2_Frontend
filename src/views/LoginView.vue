@@ -1,6 +1,6 @@
 <template>
-    <div class="login" id="login">
-        <form action="" class="login_form">
+    <section class="login section container" id="login">
+        <form action="" class="login_container grid">
             <h1 class="login_title">Connexion</h1>
             <div class="login_inputs">
                 <div class="login_box">
@@ -20,7 +20,7 @@
                Vous n'avez pas de compte ? <router-link :to="{ name: 'signup'}">S'inscrir</router-link>
             </div>
         </form>
-    </div>    
+    </section>    
 </template>
 <script>
 export default {

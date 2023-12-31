@@ -1,18 +1,10 @@
-.login {
-  position: relative;
-  display: grid;
-  align-items: center;
-  max-width: var(--max-width-container);
-  margin: auto;
-}
-.login_form {
-  position: relative;
-  margin-inline: 1.5rem;
+.login_container{
+  row-gap: 0.5rem;
   background-color: hsla(0, 0%, 100%, .01);
   border: 2px solid var(--border-color);
-  padding: 2.5rem 1rem;
   color: var(--text-color);
   border-radius: 1rem;
+  padding: 2.5rem 1rem;
   backdrop-filter: blur(16px);
 }
 .login_title {
