@@ -23,10 +23,12 @@ export default {
   data() {
     return {
       produits: [
-        {"id":"1","nom":"test","prix":"1000 DA"},
-        {"id":"2","nom":"test","prix":"1000 DA"},
-        {"id":"3","nom":"test","prix":"1000 DA"},
-        {"id":"4","nom":"test","prix":"1000 DA"}
+        {"id":"1","nom":"Cacti Plant","prix":"2000 DA","imgUrl":"1.png"},
+        {"id":"2","nom":"Cactus Plant","prix":"1000 DA","imgUrl":"2.png"},
+        {"id":"3","nom":"Aloe Vera Plant","prix":"3000 DA","imgUrl":"3.png"},
+        {"id":"4","nom":"Succulent Plant","prix":"4000 DA","imgUrl":"4.png"},
+        {"id":"4","nom":"Succulent Plant","prix":"1000 DA","imgUrl":"5.png"},
+        {"id":"4","nom":"Green Plant","prix":"7000 DA","imgUrl":"6.png"}
       ]
     };
   },
