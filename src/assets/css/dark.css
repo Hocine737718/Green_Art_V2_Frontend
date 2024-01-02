@@ -12,3 +12,6 @@ body.dark-theme{
 .dark-theme .product_circle{
     background-color: var(--container-color);
 }
+.dark-theme .button:hover{
+    background-color: #19191a;
+}
