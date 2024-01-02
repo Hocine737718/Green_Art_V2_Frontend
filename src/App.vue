@@ -8,6 +8,9 @@
   </main>
   <Footer
   />
+  <a href="#" class="scrollup" id="scroll-up"> 
+    <i class="ri-arrow-up-fill scrollup_icon"></i>
+  </a>
 </template>
 
 <script>

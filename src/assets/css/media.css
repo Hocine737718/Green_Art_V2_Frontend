@@ -26,6 +26,26 @@
     .product_description {
         padding: 0 8rem;
     }
+    @media (min-height: 550px) {
+        .home {
+            height: calc(100vh - 136px);
+        }
+    }
+    @media (min-height: 830px) {
+        .signup {
+            height: calc(100vh - 136px);
+        }        
+    } 
+    @media (min-height: 716px) {
+        .login {
+            height: calc(100vh - 136px);
+        }
+    }  
+    @media (min-height: 724px) {
+        .contact {
+            height: calc(100vh - 136px);
+        }
+    }  
 }
 @media (max-width: 863px){
     :root {

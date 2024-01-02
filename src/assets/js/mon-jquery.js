@@ -64,4 +64,11 @@ $(document).ready(function(){
     navLink.each(function() {
         $(this).click(linkAction);
     });
+
+    function scrollUp(){
+        const scrollUp = $('#scroll-up');
+        // When the scroll is higher than 400 viewport height, add the show-scroll class to the a tag with the scroll-top class
+        if(this.scrollY >= 400) scrollUp.addClass('show-scroll'); else scrollUp.removeClass('show-scroll');
+    }
+    $(window).scroll(scrollUp);
 });
