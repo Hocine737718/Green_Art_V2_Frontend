@@ -14,5 +14,6 @@ import './assets/css/media.css';
 import './assets/css/button.css';
 import './assets/css/scrollup.css';
 import './assets/js/mon-jquery.js';
+import store from './store'
 
-createApp(App).use(router).mount('#app');
+createApp(App).use(store).use(router).mount('#app');
