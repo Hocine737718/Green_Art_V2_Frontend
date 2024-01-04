@@ -71,4 +71,18 @@ $(document).ready(function(){
         if(this.scrollY >= 400) scrollUp.addClass('show-scroll'); else scrollUp.removeClass('show-scroll');
     }
     $(window).scroll(scrollUp);
+
+    const profile_mdp = $('#profile-mdp');
+    const eye_icon = $('.eye_icon');
+    eye_icon.click(function(){
+        if (profile_mdp.prop('type') === 'password') {
+            profile_mdp.prop('type','text');
+            eye_icon.addClass('ri-eye-off-fill');
+        } 
+        else {
+            profile_mdp.prop('type','password');
+            eye_icon.removeClass('ri-eye-off-fill');
+        }        
+    })
+
 });

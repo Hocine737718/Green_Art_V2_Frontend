@@ -54,6 +54,9 @@
     .product_container{
         gap: 4rem 5rem;
     }
+    .profile_form {
+        grid-template-columns: 220px 1fr;
+    }
     @media (min-height: 627px) {
         .home {
             height: calc(100vh - 136px);
@@ -208,6 +211,19 @@
     .nav_link,.nav_link:hover,.nav_link:focus{
         max-width: none;
     }
+    .profile_form {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    .profile_photo {
+        grid-template-rows: 180px;
+        justify-content: center;
+        row-gap: 1.5rem;
+    }
+    .profile_photo img{
+        max-width: 45%;
+        margin: auto;
+    }
     @media (min-height: 639px) {
         .contact {
             height: auto;
@@ -312,6 +328,59 @@
     }
     .nav_menu{
         width: 70%;
+    }
+    .profile_container{
+        padding: 0.5rem;
+    }
+    .profile_infos{
+        max-width: 252px;
+    }
+    .profile_infos *{
+        max-width: 252px;
+    }
+    .profile_box, .profile_labels {
+        display: grid;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 1rem;
+        grid-template-columns: max-content 80px auto;
+        overflow: hidden;
+    }
+    .profile_box label, .profile_labels label{
+        font-size: 0.75rem;
+    }
+    .profile_labels{
+        padding-block: 5px;
+    }
+    .profile_input{
+        font-size: 0.75rem;
+        padding-block: 5px;
+        overflow: hidden;
+    }
+    .profile_box i,.profile_labels i{
+        font-size: 1rem;
+    }
+    .profile_buttons {
+        display: inline-flex;
+    }
+    .profile_button {
+        margin-left: 0rem;
+        margin-right: 0rem;
+        padding: 0.25rem;
+        width: 50%;
+    }
+    .profile_photo {
+        padding-top: 0px;
+        row-gap: 1.5rem;
+    }
+    .profile_photo img{
+        max-width: 85%;
+    }
+    .profile_photo .profile_button {
+        padding: 0.25rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        width: 50%;
     }
     @media (min-height: 913px) {
         .product{

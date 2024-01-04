@@ -9,6 +9,7 @@ import './assets/css/contact.css';
 import './assets/css/login.css';
 import './assets/css/signup.css';
 import './assets/css/footer.css';
+import './assets/css/profile.css';
 import './assets/css/dark.css';
 import './assets/css/media.css';
 import './assets/css/button.css';
