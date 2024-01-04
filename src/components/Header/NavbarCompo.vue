@@ -7,22 +7,38 @@
             <ul class="nav_list">
                 <li class="nav_item">
                     <router-link :to="{ name: 'acceuil' }" class="nav_link">
-                        <span data-hover="Acceuil">Acceuil</span>
+                        <i class='ri-home-2-fill nav_icon'></i>
+                        <span>Acceuil</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
                     <router-link :to="{ name: 'produits' }" class="nav_link">
-                        <span data-hover="Produits">Produits</span>
+                        <i class='ri-plant-fill nav_icon'></i>
+                        <span>Produits</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
-                        <span data-hover="Contactez-nous">Contactez-nous</span>
+                    <router-link :to="{ name: 'produits' }" class="nav_link">
+                       <i class='ri-search-line nav_icon'></i>
+                       <span>Recherche</span>
+                    </router-link>
+                </li>
+                <li class="nav_item">
+                    <router-link :to="{ name: 'produits' }" class="nav_link">
+                        <i class='ri-shopping-cart-fill nav_icon'></i>
+                        <span>Panier</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
                     <router-link :to="{ name: 'login' }" class="nav_link">
-                       <span data-hover="Se Connecter">Se Connecter</span>
+                       <i class='ri-account-circle-fill nav_icon'></i>
+                       <span>Mon Compte</span>
+                    </router-link>
+                </li>
+                <li class="nav_item"  tabindex="0">
+                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
+                        <i class='ri-mail-fill nav_icon'></i>
+                        <span>Contactez-nous</span>
                     </router-link>
                 </li>
             </ul>

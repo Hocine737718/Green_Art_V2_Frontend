@@ -24,31 +24,29 @@
 .nav_list{
     display: flex;
     flex-direction: row;
-    column-gap: 3rem;
+    column-gap: 2rem;
 }
-.nav_item{
-    overflow: hidden;
+.nav_link{
+    display: grid;
+    text-align: center;
+    margin-top: 44px;
+    max-width: 50px;
+}
+.nav_link:hover,
+.nav_link:focus{
+    max-width: 108px;
 }
 .nav_link span {
     position: relative;
-    display: inline-block;
+    opacity: 0;
     transition: transform 0.3s;
-    color: var(--text-color);
-}
-.nav_link span:before {
-    position: absolute;
-    top: 100%;
-    content: attr(data-hover);
-    transform: translate3d(0, 0, 0);
-}
-.nav_link:focus,
-.nav_link:hover {
-    font-weight: bold;
+    color: var(--title-color);
 }
 .nav_link:focus span,
 .nav_link:hover span {
-    color: var(--first-color-alt);
-    transform: translateY(-100%);
+    color: var(--first-color);
+    opacity: 1;
+    font-size: small;
 }
 .nav_icon{
     color: var(--title-color);
@@ -56,7 +54,9 @@
     font-size: x-large;
     transition: .3s;
 }
-.nav_icon:hover{
+.nav_link:focus .nav_icon,
+.nav_link:hover .nav_icon {
+    font-weight: bold;
     color: var(--first-color);
 }
 .nav_btns{
