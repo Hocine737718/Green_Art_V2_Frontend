@@ -9,6 +9,9 @@
         --small-font-size: .813rem;
         --smaller-font-size: .75rem;
     }
+    .nav_list{
+        column-gap: 1rem;
+    }
     .home_container {
         grid-template-columns: repeat(2, 60%);
     }
@@ -99,7 +102,7 @@
         grid-template-columns: repeat(3, 150px);
     }
     .nav_list {
-        column-gap: 1rem;
+        column-gap: 0.7rem;
     }
     .contact_container {
         padding-bottom: 3rem;
@@ -198,7 +201,7 @@
     .nav_list {
         display: flex;
         flex-direction: column;
-        row-gap: 0.75rem;
+        row-gap: 0.1rem;
         font-size: var(--h3-font-size);
     }
     .nav_link{

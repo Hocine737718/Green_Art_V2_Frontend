@@ -35,10 +35,16 @@
                        <span>Mon Compte</span>
                     </router-link>
                 </li>
-                <li class="nav_item"  tabindex="0">
+                <li class="nav_item">
                     <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
                         <i class='ri-mail-fill nav_icon'></i>
                         <span>Contactez-nous</span>
+                    </router-link>
+                </li>
+                <li  class="nav_item" v-if="this.token!==null">
+                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
+                        <i class="ri-logout-box-r-line nav_icon"></i>
+                        <span>Se Déconneter</span>
                     </router-link>
                 </li>
             </ul>
@@ -61,11 +67,11 @@ export default {
   //props: ["cartCount"],
   data() {
     return {
-      token: null,
+      token: 1,
     };
   },
   mounted() {
-    //this.token = localStorage.getItem("token");
+    /*this.token = localStorage.getItem("token");*/
   },
 };
 </script>
