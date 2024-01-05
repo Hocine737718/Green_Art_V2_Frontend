@@ -23,7 +23,7 @@ export default {
       baseURL: "http://localhost:80/server/Djennat_Green_Art/v2/php"
     }
   },
-  mounted(){
+  beforeMount(){
     this.$store.dispatch('getProduits');
     this.$store.dispatch('getCommandes');
     this.$store.dispatch('getUser');

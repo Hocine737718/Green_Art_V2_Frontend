@@ -6,7 +6,7 @@ export default createStore({
     baseURL: "http://localhost:80/server/Djennat_Green_Art/v2/php",
     produits:[],
     commandes:[],
-    user:{}
+    user:{image:"profile.png"}
   },
   getters: {
   },
@@ -18,6 +18,19 @@ export default createStore({
       state.commandes = commandes;
     },
     setUser(state, user) {
+      if(user.image==null){
+        user.image="profile.png";
+      }
+
+      // Créer une instance de l'objet Date en utilisant la date d'origine
+      const originalDate = new Date(user.date_creation);
+      // Obtenir les composants de la date
+      const day = originalDate.getDate().toString().padStart(2, '0');
+      const month = (originalDate.getMonth() + 1).toString().padStart(2, '0'); // Les mois vont de 0 à 11, donc ajouter 1
+      const year = originalDate.getFullYear();
+      // Format de date souhaité (par exemple, 'DD/MM/YYYY')
+      user.date_creation=`${day}/${month}/${year}`;
+
       state.user = user;
     }
   },
@@ -54,7 +67,7 @@ export default createStore({
         data.append('get_compte', JSON.stringify({ token:"token0001"}));
         const response = await axios.post(`${context.state.baseURL}/get_compte.php`, data);
         console.log(`response.data=${response.data}`);
-        console.log(`response.data.image=${response.data.image}`);
+        console.log(`response.data.mdp=${response.data.mdp}`);
         context.commit('setUser', response.data);
       } 
       catch (error) {

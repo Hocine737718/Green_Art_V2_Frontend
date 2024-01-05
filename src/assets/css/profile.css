@@ -17,6 +17,10 @@
     align-items: center;
     padding: 30px;
 }
+.profile_photo img{
+    border-radius: 120px; /* ajustez la valeur selon vos préférences */
+    overflow: hidden;
+}
 .profile_form{
     grid-template-columns: 312px 1fr;
 }
@@ -71,5 +75,8 @@
 }
 .eye_icon{
     cursor: pointer;
+}
+#file_input{
+    display: none;
 }
 
