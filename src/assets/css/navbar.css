@@ -41,6 +41,7 @@
     opacity: 0;
     transition: transform 0.3s;
     color: var(--title-color);
+    min-width: 50px;
 }
 .nav_link:focus span,
 .nav_link:hover span {

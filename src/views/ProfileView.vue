@@ -52,11 +52,16 @@
             </form>
         </div>
     </section>
+    <CommandesCompo :user="user"></CommandesCompo>
 </template>
 <script>
 import axios from 'axios';
+import CommandesCompo from '@/components/Profile/CommandesCompo.vue';
 export default {
     name: 'ProfileView',
+    components:{
+        CommandesCompo
+    },
     computed:{
         baseURL(){
             return this.$store.state.baseURL;

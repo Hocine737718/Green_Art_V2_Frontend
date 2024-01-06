@@ -30,7 +30,7 @@
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'login' }" class="nav_link">
+                    <router-link :to="{ name: this.login_direction() }" class="nav_link">
                        <i class='ri-account-circle-fill nav_icon'></i>
                        <span>Mon Compte</span>
                     </router-link>
@@ -44,7 +44,7 @@
                 <li  class="nav_item" v-if="this.token!==null">
                     <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
                         <i class="ri-logout-box-r-line nav_icon"></i>
-                        <span>Se Déconneter</span>
+                        <span>Sortir</span>
                     </router-link>
                 </li>
             </ul>
@@ -69,6 +69,16 @@ export default {
     return {
       token: 1,
     };
+  },
+  methods:{
+    login_direction(){
+        if(this.token){
+            return "profile";
+        }
+        else{
+            return "login";
+        }
+    }
   },
   mounted() {
     /*this.token = localStorage.getItem("token");*/

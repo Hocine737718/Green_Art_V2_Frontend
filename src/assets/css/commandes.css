@@ -1,0 +1,208 @@
+.commandes_container{
+    background-color: hsla(0, 0%, 100%, .01);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    backdrop-filter: blur(16px);
+}
+.commandes_header{
+    width: 100%;
+    height: 10%;
+    padding: .8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.commandes_header .input-group {
+    width: 35%;
+    height: 100%;
+    padding: 0 .8rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+.commandes_header .input-group:hover {
+    width: 45%;
+    box-shadow: 0 .1rem .4rem #0002;
+}
+.commandes_header .input-group i {
+    color: var(--title-color);
+    cursor: pointer;
+    font-size: x-large;
+    transition: .3s;
+}
+.commandes_header .input-group input {
+    width: 100%;
+    padding: 0 .5rem 0 .3rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.commandes_header .input-group input::placeholder {
+    color: var(--title-color);
+}
+.commandes_header .input-group img {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.export_file {
+    position: relative;
+}
+.export_file .export_file-btn {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url(../../assets/img/icons/export.png) center / 80% no-repeat;
+    border-radius: 50%;
+    transition: .2s ease-in-out;
+}
+.export_file .export_file-btn:hover { 
+    background-color: var(--first-color-light);
+    transform: scale(1.15);
+    cursor: pointer;
+}
+.export_file input {
+    display: none;
+}
+.export_file .export_file-options {
+    position: absolute;
+    right: 0;   
+    width: 12rem;
+    border-radius: .5rem;
+    text-align: center;
+    transform: scale(.8);
+    transform-origin: top right;
+    box-shadow: 0 .2rem .5rem #0004;
+    transition: .2s;
+    display: none;
+}
+.export_file input:checked + .export_file-options {
+    display: block;
+    transform: scale(1);
+    z-index: 100;
+}
+.export_file .export_file-options label{
+    display: block;
+    width: 100%;
+    padding: .6rem 0;
+    background-color: #f2f2f2;   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: .2s ease-in-out;
+}
+.export_file .export_file-options label:hover{
+    transform: scale(1.05);
+    background-color: #fff;
+    cursor: pointer;
+}
+.export_file .export_file-options img{
+    width: 2rem;
+    height: auto;
+}
+.commandes_body {
+    width: 95%;
+    max-height: calc(89% - 1.6rem);
+    background-color: #fff4;
+    margin: .8rem auto;
+    border-radius: .6rem;
+    overflow: overlay;
+}
+.commandes_body::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+.commandes_body::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+.commandes_body:hover::-webkit-scrollbar-thumb{ 
+    visibility: visible;
+}
+.commandes_table {
+    width: 100%;
+}
+.commandes_table, .commandes_th, .commandes_td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+}
+.commandes_th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--first-color-lighten);
+    cursor: pointer;
+    text-transform: capitalize;
+    min-width: 95px;
+}
+.commandes_tbody tr {
+    --delay: .1s;
+    transition: .5s ease-in-out var(--delay), background-color 0s;
+}
+.commandes_tbody tr:hover {
+    background-color: rgba(8, 196, 64, 0.158) !important;
+}
+.commandes_tbody tr td{
+    transition: .2s ease-in-out;
+}
+.etat {
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+.etat.delivered {
+    background-color: #86e49d;
+    color: #006b21;
+}
+.etat.cancelled {
+    background-color: #d893a3;
+    color: #b30021;
+}
+.etat.pending {
+    background-color: #ebc474;
+}
+.etat.shipped {
+    background-color: #6fcaea;
+}
+.commandes_th span.icon-arrow {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    border: 1.4px solid transparent;
+    text-align: center;
+    font-size: 1rem;   
+    margin-left: .5rem;
+    transition: .2s ease-in-out;
+    font-family: sans-serif;
+}
+.commandes_th:hover span.icon-arrow{
+    border: 1.4px solid var(--first-color-alt);
+}
+.commandes_th:hover {
+    color:var(--first-color);
+}
+.commandes_th.active span.icon-arrow{
+    background-color: var(--first-color-light);
+    color: var(--first-color-alt);
+}
+.commandes_th.desc span.icon-arrow{
+    transform: rotate(180deg);
+}
+.commandes_th.active {
+    color: var(--first-color-alt);
+}
+.commandes_container tbody td.active {
+    color: var(--first-color-alt);
+    font-weight: bold;
+}
+.commandes_container tbody i {
+    cursor: pointer;
+}
+.commandes_container tbody i:hover {
+    color: var(--first-color-alt);
+}
