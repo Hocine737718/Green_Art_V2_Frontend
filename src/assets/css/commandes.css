@@ -137,7 +137,7 @@
     background-color: var(--first-color-lighten);
     cursor: pointer;
     text-transform: capitalize;
-    min-width: 95px;
+    min-width: 100px;
 }
 .commandes_tbody tr {
     --delay: .1s;

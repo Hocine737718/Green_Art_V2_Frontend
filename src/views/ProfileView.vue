@@ -35,7 +35,7 @@
                     <div class="profile_box">
                         <label >Mot de passe :</label>
                         <input type="password" class="profile_input" v-model="user.mdp" id="profile-mdp" required>
-                        <i class="eye_icon ri-eye-fill"></i>
+                        <i class="eye_icon ri-eye-fill" @click="visualiser()"></i>
                     </div>
 
                     <div class="profile_buttons">
@@ -55,6 +55,7 @@
     <CommandesCompo :user="user"></CommandesCompo>
 </template>
 <script>
+import $ from 'jquery';
 import axios from 'axios';
 import CommandesCompo from '@/components/Profile/CommandesCompo.vue';
 export default {
@@ -105,6 +106,18 @@ export default {
             else {
                 console.log("Aucun fichier sélectionné");
             }
+        },
+        visualiser(){
+            const eye_icon=$('.eye_icon');
+            const profile_mdp = $('#profile-mdp');
+            if (profile_mdp.prop('type') === 'password') {
+                profile_mdp.prop('type','text');
+                eye_icon.addClass('ri-eye-off-fill');
+            } 
+            else {
+                profile_mdp.prop('type','password');
+                eye_icon.removeClass('ri-eye-off-fill');
+            } 
         }
     }
 }

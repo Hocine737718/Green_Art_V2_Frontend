@@ -40,7 +40,6 @@ $(document).ready(function(){
     sr.reveal(`.home_social`, {delay: 600});
     sr.reveal(`.contact_box`,{origin: 'left'});
     sr.reveal(`.contact_form`,{origin: 'right'});
-    /*sr.reveal(`.product_card, .footer`,{interval: 100});*/
     sr.reveal(`.product_card, .login_form, .signup_form`,{interval: 100});
 
     const navMenu = $('#nav-menu'),
@@ -67,22 +66,8 @@ $(document).ready(function(){
 
     function scrollUp(){
         const scrollUp = $('#scroll-up');
-        // When the scroll is higher than 400 viewport height, add the show-scroll class to the a tag with the scroll-top class
         if(this.scrollY >= 400) scrollUp.addClass('show-scroll'); else scrollUp.removeClass('show-scroll');
     }
     $(window).scroll(scrollUp);
-
-    const profile_mdp = $('#profile-mdp');
-    const eye_icon = $('.eye_icon');
-    eye_icon.click(function(){
-        if (profile_mdp.prop('type') === 'password') {
-            profile_mdp.prop('type','text');
-            eye_icon.addClass('ri-eye-off-fill');
-        } 
-        else {
-            profile_mdp.prop('type','password');
-            eye_icon.removeClass('ri-eye-off-fill');
-        }        
-    })
 
 });

@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+import XLSX from 'xlsx';
 export default {
     name: 'CommandesCompo',
     props:["user"],
@@ -81,6 +83,8 @@ export default {
     methods: {
         setSort(column,event) {
             if(this.filterCommandes.length!=0){
+                let index=this.headers.indexOf(column);
+
                 let head=event.currentTarget;
                 if (column === this.sortColumn) {
                     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -90,12 +94,23 @@ export default {
                     this.sortOrder = 'asc';
                 }
 
-                document.querySelectorAll('thead th').forEach(head => head.classList.remove('active'));
+                $('thead th').each(function(){
+                    $(this).removeClass('active');
+                });
                 head.classList.add('active');
-                document.querySelectorAll('td').forEach(td => td.classList.remove('active'));
-                document.querySelectorAll('tbody tr').forEach(row => {
-                    row.querySelectorAll('td')[this.headers.indexOf(column)].classList.add('active');
-                })
+                $('td').each(function(){
+                    $(this).removeClass('active');
+                });
+                $('tbody tr').each(function(){
+                    $(this).find('td').each(function(i){
+                        console.log("i="+i);
+                        console.log("index="+index);
+                        console.log("i="+index==i);
+                        if(index==i){
+                            $(this).addClass('active');
+                        } 
+                    });
+                });
                 head.classList.toggle('desc', this.sortOrder==="desc" );
             }
         },
