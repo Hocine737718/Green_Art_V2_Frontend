@@ -35,14 +35,8 @@
                        <span>Mon Compte</span>
                     </router-link>
                 </li>
-                <li class="nav_item">
-                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
-                        <i class='ri-mail-fill nav_icon'></i>
-                        <span>Contactez-nous</span>
-                    </router-link>
-                </li>
                 <li  class="nav_item" v-if="this.token!==null">
-                    <router-link :to="{ name: 'contactez-nous' }" class="nav_link">
+                    <router-link :to="{ name: 'acceuil' }" class="nav_link">
                         <i class="ri-logout-box-r-line nav_icon"></i>
                         <span>Sortir</span>
                     </router-link>

@@ -26,10 +26,13 @@
         </div>
       </div>
     </div>
-  </section>    
+  </section> 
+  <ContactCompo></ContactCompo>   
 </template>
 <script>
+import ContactCompo from '../components/Contact/ContactCompo.vue'
 export default {
-  name: 'HomeView'
+  name: 'HomeView',
+  components:{ContactCompo}
 }
 </script>

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import ContactFormCompo from '../components/Contact/ContactFormCompo.vue';
+import ContactFormCompo from './ContactFormCompo.vue';
 export default {
   name: "ContactView",
   components : {ContactFormCompo},

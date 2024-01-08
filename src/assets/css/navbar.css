@@ -34,7 +34,7 @@
 }
 .nav_link:hover,
 .nav_link:focus{
-    max-width: 108px;
+    width: 108px;
 }
 .nav_link span {
     position: relative;

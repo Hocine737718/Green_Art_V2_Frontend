@@ -17,12 +17,14 @@
     justify-self: center;
     margin-bottom: var(--mb-0-75);
     transition: .3s;
+    max-height: 250px;
 }
 .product_title,
 .product_price{
     font-size: var(--normal-font-size);
     font-weight: var(--font-semi-bold);
     color: var(--title-color);
+    text-align: center;
 }
 .product_title{
     margin-bottom: .25rem;

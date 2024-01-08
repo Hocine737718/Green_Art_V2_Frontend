@@ -35,7 +35,7 @@
                             <td class="commandes_td">{{ commande.num }}</td>
                             <td class="commandes_td">{{ commande.date_commande }}</td>
                             <td class="commandes_td">{{ commande.etat }}</td>
-                            <td class="commandes_td">{{ commande.total }} DA</td>
+                            <td class="commandes_td">{{ commande.total }}.00 DA</td>
                             <td class="commandes_td" @click="setNumCommande(commande.num)"><i class="ri-eye-fill"></i> Voir</td>
                         </tr>
                     </tbody>
@@ -149,7 +149,7 @@ export default {
         toExcel() {
             var data = [this.headers];
             this.commandes.forEach(commande => {
-                data.push([commande.num,commande.date_commande,commande.etat,commande.total+" DA"])
+                data.push([commande.num,commande.date_commande,commande.etat,commande.total+".00 DA"])
             });
             var wb = utils.book_new();
             wb.SheetNames.push("Votre Commandes");
