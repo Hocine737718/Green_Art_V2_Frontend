@@ -36,27 +36,31 @@
                             <td class="commandes_td">{{ commande.date_commande }}</td>
                             <td class="commandes_td">{{ commande.etat }}</td>
                             <td class="commandes_td">{{ commande.total }} DA</td>
-                            <td class="commandes_td"><i class="ri-eye-fill"></i> Voir</td>
+                            <td class="commandes_td" @click="setNumCommande(commande.num)"><i class="ri-eye-fill"></i> Voir</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
+    <LignesCommandeCompo :lignes="this.lignes"/>
 </template>
 
 <script>
 import $ from 'jquery';
-import XLSX from 'xlsx';
+import {utils,writeFile} from 'xlsx';
+import LignesCommandeCompo from './LignesCommandeCompo.vue';
 export default {
     name: 'CommandesCompo',
+    components: {LignesCommandeCompo},
     props:["user"],
     data(){
         return {
             searchQuery: "",
             sortColumn: null,
             sortOrder: 'asc',
-            headers:['num','date_commande','etat','total']
+            headers:['num','date_commande','etat','total'],
+            numCommande:""
         }
     },
     computed:{
@@ -78,6 +82,12 @@ export default {
                 );
             }
             return filteredData;
+        },
+        lignes(){
+            if(this.numCommande!="")
+                return this.commandes.filter(commande => commande.num===this.numCommande)[0].lignes;
+            else
+                return [];
         }
     },
     methods: {
@@ -103,9 +113,6 @@ export default {
                 });
                 $('tbody tr').each(function(){
                     $(this).find('td').each(function(i){
-                        console.log("i="+i);
-                        console.log("index="+index);
-                        console.log("i="+index==i);
                         if(index==i){
                             $(this).addClass('active');
                         } 
@@ -144,12 +151,16 @@ export default {
             this.commandes.forEach(commande => {
                 data.push([commande.num,commande.date_commande,commande.etat,commande.total+" DA"])
             });
-            var wb = XLSX.utils.book_new();
+            var wb = utils.book_new();
             wb.SheetNames.push("Votre Commandes");
-            wb.Sheets["Votre Commandes"] = XLSX.utils.aoa_to_sheet(data);
-            XLSX.writeFile(wb, "download.xlsx");
+            wb.Sheets["Votre Commandes"] = utils.aoa_to_sheet(data);
+            writeFile(wb, "download.xlsx");
+        },
+        setNumCommande(num){
+            this.numCommande=num;
+            $('.lignes_commande').addClass('show_lignes');
+            $('main').addClass('fix_height');
         }
-
     }
 }
 </script>

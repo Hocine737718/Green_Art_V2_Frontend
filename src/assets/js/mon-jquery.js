@@ -69,5 +69,4 @@ $(document).ready(function(){
         if(this.scrollY >= 400) scrollUp.addClass('show-scroll'); else scrollUp.removeClass('show-scroll');
     }
     $(window).scroll(scrollUp);
-
 });
