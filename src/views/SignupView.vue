@@ -35,7 +35,6 @@
 import axios from 'axios';
 export default {
     name: 'SignupView',
-    props: ["baseURL"],
     data() {
         return {
             nom: '',
@@ -50,7 +49,7 @@ export default {
             try {
                 const data = new URLSearchParams();
                 data.append('inscription', JSON.stringify({ nom:this.nom, prenom:this.prenom, email: this.email, mdp: this.mdp, remdp: this.remdp  }));
-                const response = await axios.post(`${this.baseURL}/signup.php`, data);
+                const response = await axios.post(`${this.$store.state.baseURL}/signup.php`, data);
 
                 console.log(`response.data=${response.data}`);
                 console.log(`response.data[0]=${response.data[0]}`);

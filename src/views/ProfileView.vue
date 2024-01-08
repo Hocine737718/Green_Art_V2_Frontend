@@ -64,9 +64,6 @@ export default {
         CommandesCompo
     },
     computed:{
-        baseURL(){
-            return this.$store.state.baseURL;
-        },
         user() {
             return this.$store.state.user;
         }
@@ -76,7 +73,7 @@ export default {
             try {
                 const data = new URLSearchParams();
                 data.append('edit_profil', JSON.stringify(this.user));
-                const response = await axios.post(`${this.baseURL}/edit_profil.php`, data);
+                const response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
 
                 
                 console.log(`response.data=${response.data}`);

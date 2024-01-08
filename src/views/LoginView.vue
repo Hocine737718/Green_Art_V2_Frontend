@@ -26,7 +26,6 @@
 import axios from 'axios';
 export default {
     name: 'LoginView',
-    props: ["baseURL"],
     data() {
         return {
             email: '',
@@ -38,7 +37,7 @@ export default {
             try {
                 const data = new URLSearchParams();
                 data.append('connexion', JSON.stringify({ email: this.email, mdp: this.mdp }));
-                const response = await axios.post(`${this.baseURL}/login_email.php`, data);
+                const response = await axios.post(`${this.$store.state.baseURL}/login_email.php`, data);
 
                 /*
                 console.log(`response.data=${response.data}`);

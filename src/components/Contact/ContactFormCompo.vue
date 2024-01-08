@@ -1,5 +1,5 @@
 <template>
-  <form action="http://localhost:80/server/Djennat_Green_Art/v2/php/mail.php" method="POST" class="contact_form">
+  <form :action="actionURL" method="POST" class="contact_form">
     <h2 class="section_title-center">
       Contactez-nous
     </h2>
@@ -22,6 +22,11 @@
 
 <script>
 export default {
-  name: "ContactFormCompo"
+  name: "ContactFormCompo",
+  data(){
+    return{
+      actionURL:`${this.$store.state.baseURL}/mail.php`
+    }
+  }
 };
 </script>
