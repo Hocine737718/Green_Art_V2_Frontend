@@ -8,37 +8,38 @@
                 <li class="nav_item">
                     <router-link :to="{ name: 'acceuil' }" class="nav_link">
                         <i class='ri-home-2-fill nav_icon'></i>
-                        <span>Acceuil</span>
+                        <span class="nav_text">Acceuil</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
                     <router-link :to="{ name: 'produits' }" class="nav_link">
                         <i class='ri-plant-fill nav_icon'></i>
-                        <span>Produits</span>
+                        <span class="nav_text">Produits</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
                     <router-link :to="{ name: 'produits' }" class="nav_link">
                        <i class='ri-search-line nav_icon'></i>
-                       <span>Recherche</span>
+                       <span class="nav_text">Recherche</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'produits' }" class="nav_link">
+                    <router-link :to="{ name: 'panier' }" class="nav_link">
+                        <span class="nav_cart_count">{{ this.cartCount }}</span>
                         <i class='ri-shopping-cart-fill nav_icon'></i>
-                        <span>Panier</span>
+                        <span class="nav_text">Panier</span>
                     </router-link>
                 </li>
                 <li class="nav_item">
                     <router-link :to="{ name: this.login_direction() }" class="nav_link">
                        <i class='ri-account-circle-fill nav_icon'></i>
-                       <span>Mon Compte</span>
+                       <span class="nav_text">Mon Compte</span>
                     </router-link>
                 </li>
                 <li  class="nav_item" v-if="this.token!==null">
                     <router-link :to="{ name: 'acceuil' }" class="nav_link">
                         <i class="ri-logout-box-r-line nav_icon"></i>
-                        <span>Sortir</span>
+                        <span class="nav_text">Sortir</span>
                     </router-link>
                 </li>
             </ul>
@@ -58,11 +59,15 @@
 <script>
 export default {
   name: "NavbarCompo",
-  //props: ["cartCount"],
   data() {
     return {
       token: 1,
     };
+  },
+  computed:{
+    cartCount(){
+        return this.$store.state.panier.length;
+    }
   },
   methods:{
     login_direction(){

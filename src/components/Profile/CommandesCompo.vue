@@ -23,6 +23,8 @@
                             <th class="commandes_th" @click="setSort('num',$event)"> Num <span class="icon-arrow">&UpArrow;</span></th>
                             <th class="commandes_th" @click="setSort('date_commande',$event)"> Date <span class="icon-arrow">&UpArrow;</span></th>
                             <th class="commandes_th" @click="setSort('etat',$event)"> Etat <span class="icon-arrow">&UpArrow;</span></th>
+                            <th class="commandes_th" @click="setSort('addresse',$event)"> Addresse <span class="icon-arrow">&UpArrow;</span></th>
+                            <th class="commandes_th" @click="setSort('telephone',$event)"> Telephone <span class="icon-arrow">&UpArrow;</span></th>
                             <th class="commandes_th" @click="setSort('total',$event)"> Total <span class="icon-arrow">&UpArrow;</span></th>
                             <th class="commandes_th"> Details</th>
                         </tr>
@@ -35,7 +37,9 @@
                             <td class="commandes_td">{{ commande.num }}</td>
                             <td class="commandes_td">{{ commande.date_commande }}</td>
                             <td class="commandes_td">{{ commande.etat }}</td>
-                            <td class="commandes_td">{{ commande.total }}.00 DA</td>
+                            <td class="commandes_td">{{ commande.addresse }}</td>
+                            <td class="commandes_td">{{ commande.telephone }}</td>
+                            <td class="commandes_td">{{this.$prixDA(commande.total)}}</td>
                             <td class="commandes_td" @click="setNumCommande(commande.num)"><i class="ri-eye-fill"></i> Voir</td>
                         </tr>
                     </tbody>
@@ -59,7 +63,7 @@ export default {
             searchQuery: "",
             sortColumn: null,
             sortOrder: 'asc',
-            headers:['num','date_commande','etat','total'],
+            headers:['num','date_commande','etat','addresse','telephone','total'],
             numCommande:""
         }
     },
@@ -73,6 +77,8 @@ export default {
                     commande.num.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
                     commande.date_commande.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
                     commande.etat.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
+                    commande.addresse.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
+                    commande.telephone.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
                     commande.total.toString().toLowerCase().includes(this.searchQuery.toLowerCase())
             );
             if (this.sortColumn) {
@@ -122,7 +128,7 @@ export default {
             }
         },
         toPDF(){
-            const lien="http://localhost:80/server/Djennat_Green_Art/v2/front-end/src/assets/css/"
+            const lien="http://localhost:80/server/Djennat_Green_Art/v2/front-end/src/assets/css/";//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             const html_code = `
                 <!DOCTYPE html>
                     <link rel="stylesheet" type="text/css" href="${lien}mon-style.css">
@@ -149,7 +155,7 @@ export default {
         toExcel() {
             var data = [this.headers];
             this.commandes.forEach(commande => {
-                data.push([commande.num,commande.date_commande,commande.etat,commande.total+".00 DA"])
+                data.push([commande.num,commande.date_commande,commande.etat,commande.addresse,commande.telephone,commande.total+".00 DA"])
             });
             var wb = utils.book_new();
             wb.SheetNames.push("Votre Commandes");

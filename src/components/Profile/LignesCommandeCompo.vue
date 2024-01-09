@@ -22,15 +22,14 @@
                             <tr v-for="ligne in this.lignes" :key="ligne.id">
                                 <td class="lignes_td">{{ ligne.num }}</td>
                                 <td class="lignes_td">{{ ligne.titre }}</td>
-                                <td class="lignes_td"><img v-bind:src="require(`@/assets/img/produits/${ligne.image}`)"
-                                                        width="70px" height="70px" alt="image produit"></td>
-                                <td class="lignes_td">{{ ligne.prix }}.00 DA</td>
+                                <td class="lignes_td"><img v-bind:src="require(`@/assets/img/produits/${ligne.image}`)" width="70px" height="70px" alt="image produit"></td>
+                                <td class="lignes_td">{{this.$prixDA(ligne.prix)}}</td>
                                 <td class="lignes_td">{{ ligne.quantite }}</td>
-                                <td class="lignes_td">{{ ligne.total }}.00 DA</td>
+                                <td class="lignes_td">{{this.$prixDA(ligne.total)}}</td>
                             </tr>
                             <tr>
                                 <td class="lignes_td" style="text-align: right;width:100%;" colspan="5">Total</td>
-                                <td class="lignes_td">{{ total() }}.00 DA</td>
+                                <td class="lignes_td">{{this.$prixDA(total())}}</td>
                             </tr>
                         </template>
                     </tbody>

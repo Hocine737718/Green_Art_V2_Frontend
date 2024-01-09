@@ -51,10 +51,10 @@ export default {
                 data.append('inscription', JSON.stringify({ nom:this.nom, prenom:this.prenom, email: this.email, mdp: this.mdp, remdp: this.remdp  }));
                 const response = await axios.post(`${this.$store.state.baseURL}/signup.php`, data);
 
-                console.log(`response.data=${response.data}`);
-                console.log(`response.data[0]=${response.data[0]}`);
+                /*console.log(`response.data=${response.data}`);
+                console.log(`response.data[0]=${response.data[0]}`);*/
                 console.log(`response.data[1]=${response.data[1]}`);
-                
+
                 this.$router.push({ name: "login" });
             } 
             catch (error) {

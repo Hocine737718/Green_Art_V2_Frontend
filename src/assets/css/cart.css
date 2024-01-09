@@ -1,0 +1,107 @@
+.cart_container{
+    background-color: hsla(0, 0%, 100%, .01);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    padding-top: 1rem;
+}
+.cart_title{
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+}
+.cart_content{
+    transition: transform .4s;
+    overflow: overlay;    
+}
+.cart_content::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+.cart_content::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+.cart_content:hover::-webkit-scrollbar-thumb{ 
+    visibility: visible;
+}
+.cart_table {
+    width: 100%;
+    color: var(--text-color);
+    border-collapse: collapse;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+.cart_th{
+    border-collapse: collapse;
+    font-weight: 500;
+    padding: 0.75rem;
+    background-color: var(--first-color-lighten);
+    cursor: pointer;
+    text-transform: capitalize;
+    min-width: 135px;
+    border-bottom: solid 2px black;
+}
+.cart_td{
+    text-align: center;
+    padding: 0.25rem;
+}
+.cart_td i{
+    font-size: larger;
+    cursor: pointer;
+}
+.cart_td .del{
+    font-size: xx-large;
+}
+.cart_prix{
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+}
+.cart_q{
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart_footer{
+    padding: 1rem;
+    display: flex;
+    row-gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+.cart_inputs{
+    padding: 0.75rem;
+    display: flex;
+    row-gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    width:100%;
+}
+.cart_inputs input{
+    background-color: hsla(0, 0%, 100%, .01);
+    width:70%;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.cart_inputs input::placeholder{
+    color: var(--text-color);
+}
+.cart_footer button{
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--first-color-light);  
+}
+.cart_footer button:hover{
+    background-color: var(--first-color-lighten);  
+}

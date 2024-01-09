@@ -76,9 +76,9 @@ export default {
                 const response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
 
                 
-                console.log(`response.data=${response.data}`);
-                console.log(`response.data[0]=${response.data[0]}`);
-                console.log(`response.data[1]=${response.data[1]}`);
+                /*console.log(`response.data=${response.data}`);
+                console.log(`response.data[0]=${response.data[0]}`);*/
+                console.log(`response.data[1]=${response.data[1]}`);  
             } 
             catch (error) {
                 // Gestion des erreurs en cas d'échec de la connexion
