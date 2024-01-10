@@ -104,15 +104,24 @@
     justify-content: center;
     column-gap: 10px;
 }
-.forgot_button i{
-    font-size: 1.5rem;
-}
+.forgot_return,
 .new_mdp_return{
     width: 100%;
     text-align: center; 
     cursor: pointer; 
+    color:var(--text-color);
 }
 .new_mdp_return:hover{
     color:var(--first-color-dark);
     text-decoration: underline;
+}
+.forgot_button i{
+  font-size: 1.5rem;
+}
+.forgot_return a{
+    color:var(--text-color);
+}
+.forgot_return a:hover{
+  color:var(--first-color-dark);
+  text-decoration: underline;
 }

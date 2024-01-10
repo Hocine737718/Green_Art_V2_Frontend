@@ -66,7 +66,7 @@ export default {
   components:{SearchCompo},
   computed:{
     cartCount(){
-        return this.$store.state.panier.length;
+        return this.$store.getters.cartCount;
     },
     token(){
         return this.$store.getters.token;

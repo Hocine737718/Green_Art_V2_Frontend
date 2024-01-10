@@ -4,25 +4,28 @@
             <h1 class="forgot_title">Récupérer votre mot de passe</h1>
             <div class="forgot_inputs">
                 <div class="forgot_box">
-                    <input v-model="email" type="email" placeholder="Email" class="forgot_input" name="email">
+                    <input v-model="email" type="email" placeholder="Email" required class="forgot_input" name="email">
                     <i class="ri-mail-fill"></i>
                 </div>
             </div>
             <button type="submit" class="forgot_button" name="forgot">Vérifier votre email <i class="ri-arrow-up-circle-fill"></i></button>
+            <div class="forgot_return">
+                <router-link :to="{ name: 'login' }">Retour à page de connexion</router-link>
+            </div>
         </form>
         <form @submit.prevent="action_new_mdp" class="new_mdp_container grid">
             <h1 class="new_mdp_title">Récupérer votre mot de passe</h1>
             <div class="new_mdp_inputs">
                 <div class="new_mdp_box">
-                    <input v-model="code_recup" type="text" placeholder="Code de récépuration" class="new_mdp_input" name="code">
+                    <input v-model="code_recup" type="text" placeholder="Code de récépuration"  required class="new_mdp_input" name="code">
                     <i class="ri-barcode-line"></i>
                 </div>
                 <div class="new_mdp_box">
-                    <input v-model="mdp" type="password" placeholder="Mot de Passe" class="new_mdp_input" name="mdp">
+                    <input v-model="mdp" type="password" placeholder="Mot de Passe"  required class="new_mdp_input" name="mdp">
                     <i class="ri-lock-2-fill"></i>
                 </div>
                 <div class="new_mdp_box">
-                    <input v-model="remdp" type="password" placeholder="Confirmer votre mot de passe" class="new_mdp_input" name="remdp">
+                    <input v-model="remdp" type="password" placeholder="Confirmer votre mot de passe"  required class="new_mdp_input" name="remdp">
                     <i class="ri-lock-2-fill"></i>
                 </div>
             </div>

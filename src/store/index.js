@@ -17,8 +17,15 @@ export default createStore({
       if (token !== null && token !== undefined && token!="") {
         return token;
       }
-      return null;
-      //return "token0001";
+      //return null;
+      return "token0001";
+    },
+    cartCount:(state)=>{
+      let cartCount=0;
+      for(const i in state.panier){
+        cartCount+=state.panier[i].quantite;
+      }
+      return cartCount;
     }
   },
 
@@ -74,11 +81,11 @@ export default createStore({
     async getCommandes(context){
       try {
         const data = new URLSearchParams();
-        data.append('get_commandes', JSON.stringify({ token:context.state.token}));
+        data.append('get_commandes', JSON.stringify({ token:context.getters.token}));
         const response = await axios.post(`${context.state.baseURL}/get_commandes.php`, data);
-        //console.log(`response.data=${response.data}`);
-        //response.data.forEach(commande => console.log(commande));
-        context.commit('setCommandes', response.data);
+
+        if(response.data.success) context.commit('setCommandes', response.data.success);
+        else throw new Error(response.data.error);
       } 
       catch (error) {
         console.error("Erreur Get Commandes:", error);
@@ -87,11 +94,11 @@ export default createStore({
     async getUser(context){
       try {
         const data = new URLSearchParams();
-        data.append('get_compte', JSON.stringify({ token:context.state.token}));
+        data.append('get_compte', JSON.stringify({ token:context.getters.token}));
         const response = await axios.post(`${context.state.baseURL}/get_compte.php`, data);
-        //console.log(`response.data=${response.data}`);
-        //console.log(`response.data.mdp=${response.data.mdp}`);
-        context.commit('setUser', response.data);
+
+        if(response.data.success) context.commit('setUser', response.data.success);
+        else throw new Error(response.data.error);
       } 
       catch (error) {
         console.error("Erreur Get User:", error);
@@ -100,11 +107,11 @@ export default createStore({
     async getPanier(context){
       try {
         const data = new URLSearchParams();
-        data.append('get_panier', JSON.stringify({ token:context.state.token}));
+        data.append('get_panier', JSON.stringify({ token:context.getters.token}));
         const response = await axios.post(`${context.state.baseURL}/get_panier.php`, data);
-        console.log(`panier response.data=${response.data}`);
-        response.data.forEach(produit => console.log(produit));
-        context.commit('setPanier', response.data);
+        
+        if(response.data.success) context.commit('setPanier', response.data.success);
+        else throw new Error(response.data.error);
       } 
       catch (error) {
         console.error("Erreur Get Panier:", error);

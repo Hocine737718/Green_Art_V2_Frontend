@@ -31,7 +31,7 @@
                     </thead>
                     <tbody class="commandes_tbody">
                         <tr v-if="filterCommandes.length==0">
-                            <td class="commandes_td" style="text-align: center;width:100%;" colspan="5">Aucun résultat trouvé.</td>
+                            <td class="commandes_td" style="text-align: center;width:100%;" colspan="7">Aucun résultat trouvé.</td>
                         </tr>
                         <tr v-for="commande in filterCommandes" :key="commande">
                             <td class="commandes_td">{{ commande.num }}</td>

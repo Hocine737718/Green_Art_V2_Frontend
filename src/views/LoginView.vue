@@ -48,10 +48,13 @@ export default {
         async action_login(){
             try {
                 const data = new URLSearchParams();
-                data.append('connexion', JSON.stringify({ email: this.email, mdp: this.mdp }));
+                data.append('login_email', JSON.stringify({ email: this.email, mdp: this.mdp }));
                 const response = await axios.post(`${this.$store.state.baseURL}/login_email.php`, data);
-                localStorage.setItem("token", response.data[1]);
-                this.$router.push({ name: "acceuil" });
+                if(response.data.success){
+                    localStorage.setItem("token", response.data.success);
+                    this.$router.push({ name: "home" });                    
+                }
+                else throw new Error(response.data.error);
             } 
             catch (error) {
                 console.error('Erreur de connexion:', error);
