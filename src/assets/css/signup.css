@@ -3,7 +3,7 @@
 }
 .signup_container {
   row-gap: 0.5rem;
-  background-color: hsla(0, 0%, 100%, .01);
+  background-color:var(--transparent-color);
   border: 2px solid var(--border-color);
   color: var(--text-color);
   border-radius: 1rem;
@@ -70,7 +70,7 @@
   text-align: center;
 }
 .signup_return a{
-  color: var(--text-color);
+  color: var(--text-color-alt);
   font-weight: 500;
 }
 .signup_return:hover {

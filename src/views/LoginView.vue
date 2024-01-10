@@ -13,12 +13,24 @@
                 </div>
             </div>
             <div class="login_forgot_container">
-                <a href="#" class="login_forgot">Mot de passe oublié?</a>
+                <router-link :to="{ name: 'forgot' }" class="login_forgot">Mot de passe oublié?</router-link>
             </div>
             <button type="submit" class="login_button" name="connexion">Se Connecter</button>
             <div class="login_register">
                Vous n'avez pas de compte ? <router-link :to="{ name: 'signup'}">S'inscrir</router-link>
             </div>
+            <div class="login_google">
+                <div class="login_ou">
+                    <div class="login_ligne"></div>
+                    ou
+                    <div class="login_ligne"></div>
+                </div>
+                <button>
+                    Se Connecter avec Google
+                    <i class="ri-google-fill"></i>
+                </button>
+            </div>
+
         </form>
     </section>    
 </template>
@@ -38,18 +50,10 @@ export default {
                 const data = new URLSearchParams();
                 data.append('connexion', JSON.stringify({ email: this.email, mdp: this.mdp }));
                 const response = await axios.post(`${this.$store.state.baseURL}/login_email.php`, data);
-
-                /*
-                console.log(`response.data=${response.data}`);
-                console.log(`response.data[0]=${response.data[0]}`);
-                console.log(`response.data[1]=${response.data[1]}`);
-                */
-
                 localStorage.setItem("token", response.data[1]);
                 this.$router.push({ name: "acceuil" });
             } 
             catch (error) {
-                // Gestion des erreurs en cas d'échec de la connexion
                 console.error('Erreur de connexion:', error);
             }
         }

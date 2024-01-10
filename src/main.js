@@ -13,6 +13,7 @@ import './assets/css/cart.css';
 import './assets/css/profile.css';
 import './assets/css/commandes.css';
 import './assets/css/lignes_com.css';
+import './assets/css/forgot & new_mdp.css';
 import './assets/css/search.css';
 import './assets/css/footer.css';
 import './assets/css/dark.css';

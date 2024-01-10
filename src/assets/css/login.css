@@ -3,7 +3,7 @@
 }
 .login_container{
   row-gap: 0.5rem;
-  background-color: hsla(0, 0%, 100%, .01);
+  background-color: var(--transparent-color);
   border: 2px solid var(--border-color);
   color: var(--text-color);
   border-radius: 1rem;
@@ -56,7 +56,7 @@
   font-size: var(--small-font-size);
 }
 .login_forgot {
-  color: var(--text-color);
+  color: var(--text-color-alt);
 }
 .login_forgot:hover {
   text-decoration: underline;
@@ -81,4 +81,34 @@
 }
 .login_register a:hover {
   text-decoration: underline;
+}
+.login_google{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.login_ou{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 10px;
+}
+.login_ligne{
+  width: 30%;
+  border: 1px solid #000;
+  margin: 10px 0;
+}
+.login_google button{
+  width: 55%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: hsl(var(--hue), 78%, 55%);
+  border-radius: 4rem;
+  color: var(--text-color);
+  font-size: small;
+  cursor: pointer;
 }

@@ -1,0 +1,118 @@
+.show_forgot {
+  animation: slide-forgot 0.5s ease-out;
+  transform: translateY(-150%);
+}
+.show_new_mdp {
+  animation: slide-new_mdp 0.5s ease-out;
+  display: grid!important;
+  transform: translateY(-70%);
+}
+@keyframes slide-forgot {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-150%);
+  }
+}
+@keyframes slide-new_mdp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-70%);
+  }
+}
+.forgot-new_mdp{
+  min-height: calc(100vh - 136px);
+  overflow: hidden;
+}
+.new_mdp_container,
+.forgot_container{
+  row-gap: 0.5rem;
+  background-color: var(--transparent-color);
+  border: 2px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 1rem;
+  padding: 2.5rem 1rem;
+  backdrop-filter: blur(16px);
+}
+.new_mdp_container{
+  display: none;
+}
+.new_mdp_title,
+.forgot_title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  margin-bottom: 1.25rem;
+}
+.new_mdp_inputs, 
+.new_mdp_box,
+.forgot_inputs, 
+.forgot_box {
+  display: grid;
+}
+.new_mdp_inputs,
+.forgot_inputs {
+  row-gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+.new_mdp_box,
+.forgot_box {
+  grid-template-columns: 1fr max-content;
+  column-gap: .75rem;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding-inline: 1.25rem;
+  border-radius: 4rem;
+}
+.new_mdp_input, 
+.new_mdp_button,
+.forgot_input, 
+.forgot_button {
+  border: none;
+  outline: none;
+}
+.new_mdp_input,
+.forgot_input {
+  width: 100%;
+  background: none;
+  color: var(--text-color);
+  padding-block: 1rem;
+}
+.new_mdp_input::placeholder,
+.forgot_input::placeholder {
+  color: var(--text-color);
+}
+.new_mdp_box i 
+.forgot_box i {
+  font-size: 1.25rem;
+}
+.new_mdp_button,
+.forgot_button {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: hsl(var(--hue), 78%, 55%);
+    border-radius: 4rem;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+}
+.forgot_button i{
+    font-size: 1.5rem;
+}
+.new_mdp_return{
+    width: 100%;
+    text-align: center; 
+    cursor: pointer; 
+}
+.new_mdp_return:hover{
+    color:var(--first-color-dark);
+    text-decoration: underline;
+}

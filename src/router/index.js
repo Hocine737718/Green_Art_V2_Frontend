@@ -6,6 +6,7 @@ import SignupView from '../views/SignupView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
 import LogoutView from '../views/LogoutView.vue'
+import ForgotView from '../views/ForgotView.vue'
 const routes = [
   {
     path: '/',
@@ -41,6 +42,11 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component: LogoutView
+  },
+  {
+    path: '/forgot',
+    name: 'forgot',
+    component: ForgotView
   }
 ]
 
