@@ -15,7 +15,7 @@
     color: #FFF;
 }
 .scrollup:hover{
-    background-color: var(--first-color-alt);
+    background-color: var(--first-color-light);
     opacity: 1;
 }
 .show-scroll{

@@ -18,6 +18,7 @@ export default createStore({
         return token;
       }
       return null;
+      //return "token0001";
     }
   },
 

@@ -36,7 +36,7 @@
     border: 0px;
     outline: 0px;
 }
-.search__input::placeholder {
+.search_input::placeholder {
     color: var(--text-color);
 }
 .search_close{

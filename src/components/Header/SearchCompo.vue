@@ -24,7 +24,7 @@ export default {
         clickSearch(){
             this.$store.commit('search',this.search);
             $('.search').removeClass('show_search');
-            this.$router.push({ name: "produits" });
+            this.$router.push({ name: "products" });
         }
     }
 }

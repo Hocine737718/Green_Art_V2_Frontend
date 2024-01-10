@@ -1,3 +1,6 @@
+.cart{
+    min-height: calc(100vh - 136px);
+}
 .cart_container{
     background-color: hsla(0, 0%, 100%, .01);
     border: 2px solid var(--border-color);
@@ -34,7 +37,7 @@
 }
 .cart_table {
     width: 100%;
-    color: var(--text-color);
+    color: var(--text-color-alt);
     border-collapse: collapse;
     border-top: solid 2px black;
     border-bottom: solid 2px black;
@@ -43,7 +46,7 @@
     border-collapse: collapse;
     font-weight: 500;
     padding: 0.75rem;
-    background-color: var(--first-color-lighten);
+    background-color: var(--first-color-light);
     cursor: pointer;
     text-transform: capitalize;
     min-width: 135px;
@@ -101,6 +104,7 @@
     padding: 1rem;
     border-radius: 1rem;
     background-color: var(--first-color-light);  
+    color: var(--text-color-alt);
 }
 .cart_footer button:hover{
     background-color: var(--first-color-lighten);  

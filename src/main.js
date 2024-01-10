@@ -12,7 +12,7 @@ import './assets/css/signup.css';
 import './assets/css/cart.css';
 import './assets/css/profile.css';
 import './assets/css/commandes.css';
-import './assets/css/lignes.css';
+import './assets/css/lignes_com.css';
 import './assets/css/search.css';
 import './assets/css/footer.css';
 import './assets/css/dark.css';

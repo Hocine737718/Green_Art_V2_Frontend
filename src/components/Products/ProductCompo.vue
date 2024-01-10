@@ -23,14 +23,18 @@ export default {
       if(this.token){
         try{
           const data = new URLSearchParams();
-          data.append('add_ligne_panier', JSON.stringify({token:this.token, id_produit: this.produit.id, quantite: 1}));
+          data.append('add_ligne_panier', JSON.stringify({token:this.token, id_produit: this.produit.id}));
           const response = await axios.post(`${this.$store.state.baseURL}/add_ligne_panier.php`, data);
+
           if(response.data.success) this.$store.dispatch('getPanier');
           else throw new Error(response.data.error);
         }
         catch (error) {
-          console.error("Erreur Get Produits:", error);
+          console.error("Erreur Ajouter Au Panier:", error);
         }        
+      }
+      else{
+        console.error("Erreur Ajouter Au Panier:", "Il faut se connecter d'abord !");
       }
     }
   }

@@ -1,6 +1,6 @@
 body.dark-theme{
     --first-color: #000000;
-    --first-color-light: #272424;
+    --first-color-light: #413d3d;
     --first-color-lighten: #2724249d;
     --text-color-alt: hsl(var(--hue), 4%, 95%);
     --border-color: hsl(var(--hue), 0%, 100%);
