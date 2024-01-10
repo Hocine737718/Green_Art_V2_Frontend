@@ -5,15 +5,16 @@ import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
+import LogoutView from '../views/LogoutView.vue'
 const routes = [
   {
     path: '/',
-    name: 'acceuil',
+    name: 'home',
     component: HomeView
   },
   {
-    path: '/produits',
-    name: 'produits',
+    path: '/products',
+    name: 'products',
     component: ProductsView
   },
   {
@@ -32,9 +33,14 @@ const routes = [
     component: ProfileView
   },
   {
-    path: '/panier',
-    name: 'panier',
+    path: '/cart',
+    name: 'cart',
     component: CartView
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: LogoutView
   }
 ]
 

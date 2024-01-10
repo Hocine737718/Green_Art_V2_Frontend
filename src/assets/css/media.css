@@ -42,11 +42,6 @@
             height: calc(100vh - 136px);
         }
     }  
-    @media (min-height: 724px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
-    }  
 }
 @media (max-width: 863px){
     :root {
@@ -62,12 +57,7 @@
         .login {
             height: calc(100vh - 136px);
         }
-    }  
-    @media (min-height: 724px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
-    }
+    } 
     @media (min-height: 895px) {
         .signup {
             height: calc(100vh - 136px);
@@ -98,7 +88,7 @@
         column-gap: 0.7rem;
     }
     .contact_container {
-        padding-bottom: 3rem;
+        padding-bottom: 1rem;
     }
     .home_social {
         right: -0.5rem;
@@ -108,11 +98,6 @@
             height: calc(100vh - 136px);
         }
     }  
-    @media (min-height: 639px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
-    }    
 }
 @media (max-width: 669px){
     .product{
@@ -145,9 +130,6 @@
     }
     .section {
         padding: 3rem 0 1rem;
-    }
-    .contact {
-        padding: 1rem 0 1rem;
     }
     .contact_container {
         row-gap: 1.5rem;
@@ -191,11 +173,14 @@
         grid-template-columns: 30px 1fr;
         text-align: left;
     }
-    .nav_link span{
+    .nav_link .nav_text {
         opacity: 1;
-    }
-    .nav_link,.nav_link:hover,.nav_link:focus{
         max-width: none;
+        min-width: 150px;
+    }
+    .nav_cart_count{
+        top: 310px;
+        margin-left: 20px;
     }
     .profile_form {
         grid-template-columns: 1fr;
@@ -210,21 +195,19 @@
         max-width: 45%;
         margin: auto;
     }
-    @media (min-height: 639px) {
-        .contact {
-            height: auto;
-        }
-    }
-    @media (min-height: 678px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
-    }
     @media (min-height: 825px) {
         .signup {
             height: calc(100vh - 136px);
         }        
-    } 
+    }
+    @media (max-height: 485px) {
+        .nav_cart_count {
+            top: 250px;
+        }
+        .nav_menu {
+            padding: 0.2rem 0 0 3rem;
+        }        
+    }
 }
 @media (max-width: 549px){
     :root {
@@ -241,9 +224,6 @@
         width: 90px;
         height: 90px;
     }
-    @media (min-height: 525px) {
-
-    } 
     @media (min-height: 651px) {
         .login {
             height: calc(100vh - 136px);
@@ -253,11 +233,6 @@
         .product{
             height: calc(100vh - 136px);
         }        
-    }
-    @media (min-height: 739px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
     } 
 }
 @media (max-width: 415px){
@@ -389,11 +364,6 @@
         .product{
             height: calc(100vh - 136px);
         }        
-    }
-    @media (min-height: 811px) {
-        .contact {
-            height: calc(100vh - 136px);
-        }
     }
 }
 @media (max-width: 365px){

@@ -1,7 +1,7 @@
 .contact_container{
     row-gap: 3.5rem;
     grid-template-columns: repeat(2, 1fr);
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
 }
 .contact_data{
     display: grid;
@@ -18,7 +18,7 @@
     display: inline-flex;
     align-items: center;
     column-gap: .5rem;
-    color: var(--title-color);
+    color: var(--first-color-dark);
     font-weight: var(--font-medium);
 }
 .contact_icon{
@@ -57,5 +57,5 @@
 }
 .contact_input, .contact_input:focus, .contact_input::placeholder,
 .contact_area, .contact_area:focus, .contact_area::placeholder{
-    color: var(--first-color-alt);
+    color: var(--placeholder-color);
 }

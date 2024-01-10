@@ -20,9 +20,11 @@ export default {
   components: { Navbar, Footer },
   beforeMount(){
     this.$store.dispatch('getProduits');
-    this.$store.dispatch('getCommandes');
-    this.$store.dispatch('getUser');
-    this.$store.dispatch('getPanier');
+    if(this.$store.getters.token){
+      this.$store.dispatch('getCommandes');
+      this.$store.dispatch('getUser');
+      this.$store.dispatch('getPanier');      
+    }
   }
 }
 </script>

@@ -10,7 +10,7 @@
         <p class="home_description">
           Votre destination de choix pour des plantes artificielles exceptionnelles en Algérie !
         </p>
-        <router-link :to="{ name: 'produits' }" class="button button--flex">
+        <router-link :to="{ name: 'products' }" class="button button--flex">
           Nos Produits
         </router-link>
       </div>

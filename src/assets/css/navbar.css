@@ -1,6 +1,9 @@
+.show-menu{
+    right: 0!important;
+}
 .header{
     width: 100%;
-    background-color: #ffffff00;
+    background-color: var(--transparent-color);
     position:  absolute;
     top: 0;
     left: 0;
@@ -19,7 +22,7 @@
     align-items: center;
 }
 #logo:hover{
-    opacity: 75%;
+    opacity: 50%;
 }
 .nav_list{
     display: flex;
@@ -33,7 +36,7 @@
     max-width: 50px;
 }
 .nav_cart_count{
-    background-color: var(--text-color);
+    background-color: var(--text-color-alt);
     color: white;
     border-radius: 50%;
     position: absolute;
@@ -54,7 +57,7 @@
     position: relative;
     opacity: 0;
     transition: transform 0.3s;
-    color: var(--title-color);
+    color: var(--text-color-alt);
     min-width: 50px;
 }
 .nav_link:focus .nav_text,
@@ -64,7 +67,7 @@
     font-size: small;
 }
 .nav_icon{
-    color: var(--title-color);
+    color: var(--text-color-alt);
     cursor: pointer;
     font-size: x-large;
     transition: .3s;
@@ -78,6 +81,7 @@
 .nav_link:hover .nav_cart_count {
     font-weight: bold;
     background-color: var(--first-color);
+    color: black;
 }
 .nav_btns{
     display: flex;

@@ -1,20 +1,29 @@
 body.dark-theme{
-    --first-color: #000;
-    --first-color-alt: #FFF;
-    --title-color: hsl(var(--hue), 4%, 95%);
-    --text-color: hsl(var(--hue), 4%, 1%);
+    --first-color: #000000;
+    --first-color-light: #272424;
+    --first-color-lighten: #2724249d;
+    --text-color-alt: hsl(var(--hue), 4%, 95%);
     --border-color: hsl(var(--hue), 0%, 100%);
-
+    --placeholder-color: hsl(var(--hue), 0%, 0%);
     --body-color: hsl(var(--hue), 8%, 12%);
     --container-color: hsl(var(--hue), 78%, 55%);
     --background-img: url('../img/background/dark.png');
 }
+.dark-theme .contact_description{
+    color: var(--text-color-alt);
+}
 .dark-theme .product_circle{
     background-color: var(--container-color);
 }
-.dark-theme .button:hover{
-    background-color: #19191a;
-}
 .dark-theme .lignes_container{
     background-color: hsl(0deg 0% 55.69% / 97%);
+}
+.dark-theme .nav_cart_count{
+    color: black;
+}
+.dark-theme .nav_link:focus .nav_cart_count ,
+.dark-theme .nav_link:hover .nav_cart_count {
+    font-weight: bold;
+    background-color: var(--first-color);
+    color: white;
 }

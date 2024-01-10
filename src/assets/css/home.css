@@ -41,7 +41,7 @@
 .home_social-follow{
     font-weight: var(--font-medium);
     font-size: var(--small-font-size);
-    color: #000;
+    color: var(--text-color);
     position: relative;
     transform: rotate(90deg);
 }
@@ -52,7 +52,7 @@
 }
 .home_social-link{
     font-size: 1.15rem;
-    color: #000;
+    color: var(--text-color);
     transition: .3s;
 }
 .home_social-link:hover{
@@ -60,5 +60,5 @@
 }
 .home small{
     font-size: var(--h1-font-size);
-    color: hsl(155, 78%, 31%);
+    color: var(--first-color);
 }

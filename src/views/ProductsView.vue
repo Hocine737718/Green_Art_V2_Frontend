@@ -33,7 +33,6 @@ export default {
     filterProduits() {
       let filteredData=this.produits.filter(
         produit =>
-          produit.num.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
           produit.titre.toString().toLowerCase().includes(this.searchQuery.toLowerCase())||
           produit.prix.toString().toLowerCase().includes(this.searchQuery.toLowerCase())
         );

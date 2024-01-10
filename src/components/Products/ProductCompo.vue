@@ -13,13 +13,25 @@ import axios from 'axios';
 export default {
   name: "ProductCompo",
   props: ["produit"],
+  computed:{
+    token(){
+      return this.$store.getters.token;
+    }
+  },
   methods:{
     async ajouterAuPanier(){
-      const data = new URLSearchParams();
-      data.append('add_ligne_panier', JSON.stringify({token:"token0001", id_produit: this.produit.id, quantite: 1}));
-      const response = await axios.post(`${this.$store.state.baseURL}/add_ligne_panier.php`, data);
-      console.log(`response.data=${response.data}`);
-      this.$store.dispatch('getPanier');  
+      if(this.token){
+        try{
+          const data = new URLSearchParams();
+          data.append('add_ligne_panier', JSON.stringify({token:this.token, id_produit: this.produit.id, quantite: 1}));
+          const response = await axios.post(`${this.$store.state.baseURL}/add_ligne_panier.php`, data);
+          if(response.data.success) this.$store.dispatch('getPanier');
+          else throw new Error(response.data.error);
+        }
+        catch (error) {
+          console.error("Erreur Get Produits:", error);
+        }        
+      }
     }
   }
 };

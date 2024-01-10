@@ -14,14 +14,16 @@
     /* Color mode HSL(hue, saturation, lightness) */
     --hue: 155;
     --first-color: hsl(var(--hue), 78%, 31%);
-    --first-color-alt: hsl(var(--hue), 78%, 22%);
+    --first-color-dark: hsl(var(--hue), 78%, 22%);
     --first-color-light: hsl(var(--hue), 78%, 55%);
     --first-color-lighten: hsl(var(--hue), 78%, 70%);
-    --title-color: hsl(var(--hue), 4%, 15%);
     --text-color: hsl(var(--hue), 0%, 0%);
+    --text-color-alt: hsl(var(--hue), 0%, 0%);
     --text-color-light: hsl(var(--hue), 0%, 50%);
+    --placeholder-color: hsl(var(--hue), 78%, 22%);
     --border-color: hsl(var(--hue), 0%, 30%);
     --container-color: #F2F3F5;
+    --transparent-color:#FFF0;
 
     /* Font and typography */
     --body-font: 'Poppins', sans-serif;
@@ -83,7 +85,7 @@ button{
     outline: none;
 }
 h1,h2,h3{
-    color: var(--title-color);
+    color: var(--text-color-alt);
     font-weight: var(--font-semi-bold);
 }
 ul{
@@ -125,6 +127,4 @@ img{
     margin-bottom: var(--mb-2);
     line-height: 140%;
 }
-.show-menu{
-    right: 0!important;
-}
+
