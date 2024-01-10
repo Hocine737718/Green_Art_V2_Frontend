@@ -18,7 +18,7 @@
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <router-link :to="{ name: 'produits' }" class="nav_link">
+                    <router-link :to="{ name: 'produits' }" class="nav_link" @click="goSearch()">
                        <i class='ri-search-line nav_icon'></i>
                        <span class="nav_text">Recherche</span>
                     </router-link>
@@ -53,12 +53,16 @@
                 <i class="ri-menu-line nav_icon"></i>
             </div>
         </div>
+        <SearchCompo></SearchCompo>
     </nav>
 </template>
 
 <script>
+import SearchCompo from './SearchCompo.vue'
+import $ from 'jquery';
 export default {
   name: "NavbarCompo",
+  components:{SearchCompo},
   data() {
     return {
       token: 1,
@@ -77,6 +81,9 @@ export default {
         else{
             return "login";
         }
+    },
+    goSearch(){
+        $('.search').addClass('show_search');
     }
   },
   mounted() {

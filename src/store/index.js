@@ -7,7 +7,8 @@ export default createStore({
     produits:[],
     commandes:[],
     user:{image:"profile.png"},
-    panier:[]
+    panier:[],
+    searchQuery:""
   },
   getters: {
   },
@@ -36,13 +37,17 @@ export default createStore({
     },
     supprimerDuPanier(state, id_produit) {
       state.panier = state.panier.filter(ligne=>ligne.id_produit!=id_produit);
+    },
+    search(state, s){
+      console.log("s="+s);
+      state.searchQuery=s;
     }
   },
   actions: {
     async getProduits(context){
       try {
         const data = new URLSearchParams();
-        data.append('get_produits', JSON.stringify({}));
+        data.append('get_produits', JSON.stringify({token:"token0001"}));
         const response = await axios.post(`${context.state.baseURL}/get_produits.php`, data);
         //console.log(`response.data=${response.data}`);
         //response.data.forEach(produit => console.log(produit));

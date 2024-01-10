@@ -54,3 +54,11 @@
 .product_card:hover .product_img{
     transform: translateY(-.5rem);
 }
+.product_null{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 300px;
+    font-size: xxx-large;
+}
