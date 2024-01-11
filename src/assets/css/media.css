@@ -170,9 +170,9 @@
         justify-content: center;
         row-gap: 1.5rem;
     }
-    .profile_photo img{
-        max-width: 45%;
-        margin: auto;
+    .profile_button{
+        margin-left: auto;
+        margin-right: auto;
     }
     @media (max-height: 485px) {
         .nav_cart_count {
@@ -201,6 +201,9 @@
     .login_google button {
         width: 50%;
         padding: 0.5rem;
+    }
+    .profile_mdp span{
+        font-size: small;
     }
 }
 @media (max-width: 415px){
@@ -308,12 +311,6 @@
     .profile_buttons {
         display: inline-flex;
     }
-    .profile_button {
-        margin-left: 0rem;
-        margin-right: 0rem;
-        padding: 0.25rem;
-        width: 50%;
-    }
     .profile_photo {
         padding-top: 0px;
         row-gap: 1.5rem;
@@ -325,7 +322,6 @@
         padding: 0.25rem;
         margin-left: 2.5rem;
         margin-right: 2.5rem;
-        width: 50%;
     }
     .commandes_header{
         display: grid;
@@ -349,6 +345,9 @@
     .login_google button {
         width: 70%;
         font-size: small;
+    }
+    .cart_inputs input{
+        width:100%;
     }
 }
 @media (max-width: 365px){

@@ -92,7 +92,7 @@
     width:100%;
 }
 .cart_inputs input{
-    background-color: hsla(0, 0%, 100%, .01);
+    background-color: var(--transparent-color);
     width:70%;
     border-radius: 1rem;
     padding: 1rem;

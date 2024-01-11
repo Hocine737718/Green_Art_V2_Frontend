@@ -90,40 +90,75 @@ export default {
             var total=0;
             for(let i in this.lignes) total+=Number(this.lignes[i].prix*this.lignes[i].quantite);
             return total;
+        },
+        token(){
+            return this.$store.getters.token;
         }
     },
     methods:{
         async add(id_produit){
             const ligneTrouvee = this.lignes.find(ligne => ligne.id_produit === id_produit);
             ligneTrouvee.quantite++;
-            const data = new URLSearchParams();
-            data.append('q_ligne_panier', JSON.stringify({token:"token0001", id_produit: id_produit, quantite: ligneTrouvee.quantite}));
-            const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
-            console.log(`response.data=${response.data}`);
+
+            try{
+                const data = new URLSearchParams();
+                data.append('q_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit, quantite: ligneTrouvee.quantite}));
+                const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
+
+                if(response.data.success) console.log("success",response.data.success)
+                else throw new Error(response.data.error);
+            }
+            catch (error) {
+                console.error('Erreur de connexion:', error);
+            }
         },
         async sub(id_produit){
             const ligneTrouvee = this.lignes.find(ligne => ligne.id_produit === id_produit);
-            ligneTrouvee.quantite--;
-            const data = new URLSearchParams();
-            data.append('q_ligne_panier', JSON.stringify({token:"token0001", id_produit: id_produit, quantite: ligneTrouvee.quantite}));
-            const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
-            console.log(`response.data=${response.data}`);
+            if(ligneTrouvee.quantite>1){
+                ligneTrouvee.quantite--;
+                try{
+                    const data = new URLSearchParams();
+                    data.append('q_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit, quantite: ligneTrouvee.quantite}));
+                    const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
+
+                    if(response.data.success) console.log("success",response.data.success)
+                    else throw new Error(response.data.error);
+                }
+                catch (error) {
+                    console.error('Erreur de connexion:', error);
+                }               
+            }
         },
         async del(id_produit){
-            this.$store.commit('supprimerDuPanier', id_produit);
-            const data = new URLSearchParams();
-            data.append('del_ligne_panier', JSON.stringify({token:"token0001", id_produit: id_produit }));
-            const response = await axios.post(`${this.$store.state.baseURL}/del_ligne_panier.php`, data);
-            console.log(`response.data=${response.data}`);
+            try{
+                this.$store.commit('supprimerDuPanier', id_produit);
+
+                const data = new URLSearchParams();
+                data.append('del_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit }));
+                const response = await axios.post(`${this.$store.state.baseURL}/del_ligne_panier.php`, data);
+
+                if(response.data.success) console.log("success",response.data.success)
+                else throw new Error(response.data.error);
+            }
+            catch (error) {
+                console.error('Erreur de connexion:', error);
+            }
         },
         async validerCommande(){
             if(this.lignes.length!=0){
-                const data = new URLSearchParams();
-                data.append('add_commande', JSON.stringify({token:"token0001", lignes:this.lignes,addresse:this.addresse, telephone:this.telephone }));
-                const response = await axios.post(`${this.$store.state.baseURL}/add_commande.php`, data);
-                console.log(`response.data=${response.data}`);
-                this.$store.dispatch('getPanier');            
-                this.$store.dispatch('getCommandes');    
+                try{
+                    const data = new URLSearchParams();
+                    data.append('add_commande', JSON.stringify({token:this.token, lignes:this.lignes,addresse:this.addresse, telephone:this.telephone }));
+                    const response = await axios.post(`${this.$store.state.baseURL}/add_commande.php`, data);
+                    
+                    if(response.data.success){
+                        location.reload();                   
+                    }
+                    else throw new Error(response.data.error);
+                }
+                catch (error) {
+                    console.error('Erreur de connexion:', error);
+                }
             }
         }
     }

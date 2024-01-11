@@ -56,25 +56,43 @@
     grid-template-columns: 1fr 1fr;
 }
 .profile_button {
-    padding: 1rem;
-    margin-bottom: 1rem;
+    max-width: 10rem;
+    padding: 0.75rem;
+    margin: 0.75rem;
     background-color: hsl(var(--hue), 78%, 55%);
     border-radius: 4rem;
     color: var(--text-color);
     font-weight: 500;
     cursor: pointer;
-    margin-left: 1rem;
-    margin-right: 1rem;
     display: grid;
-    grid-template-columns: 20px 50px;
+    grid-template-columns: 30px 90px;
     align-items: center;
     justify-content: center;
 }
 .profile_button i,.profile_box i {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
-.eye_icon{
+.profile_mdp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.profile_ligne{
+    width: 100%;
+    border: 1px solid var(--border-color);
+    margin: 10px 0;
+}
+.profile_mdp span{
+    color: var(--text-color);
+    font-size: medium;
     cursor: pointer;
+    text-align: center;
+}
+.profile_mdp span:hover{
+    color:var(--first-color-dark);
+    text-decoration: underline;
 }
 #file_input{
     display: none;

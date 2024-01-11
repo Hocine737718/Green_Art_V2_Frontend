@@ -32,16 +32,10 @@
                         <input type="email" name="email" class="profile_input" v-model="user.email" required>
                         <i class="ri-mail-fill"></i>
                     </div>
-                    <div class="profile_box">
-                        <label >Mot de passe :</label>
-                        <input type="password" class="profile_input" v-model="user.mdp" id="profile-mdp" required>
-                        <i class="eye_icon ri-eye-fill" @click="visualiser()"></i>
-                    </div>
-
                     <div class="profile_buttons">
                         <button type="submit" class="profile_button">
                             <i class="ri-save-2-fill"></i>
-                            Mémoriser 
+                            Sauvegarder 
                         </button>
                         <button @click="reset" class="profile_button">
                             <i class="ri-refresh-fill"></i>
@@ -50,17 +44,24 @@
                     </div>
                 </div>
             </form>
+            <div class="profile_mdp">
+                <div class="profile_ligne"></div>
+                <span @click="edit_mdp()">Vous pouvez modifier votre mot de passe ici.</span>
+            </div>
         </div>
     </section>
     <CommandesCompo :user="user"></CommandesCompo>
+    <EditMdpCompo></EditMdpCompo>
 </template>
 <script>
 import $ from 'jquery';
 import axios from 'axios';
 import CommandesCompo from '@/components/Profile/CommandesCompo.vue';
+import EditMdpCompo from '@/components/Profile/EditMdpCompo.vue';
 export default {
     name: 'ProfileView',
     components:{
+        EditMdpCompo,
         CommandesCompo
     },
     computed:{
@@ -76,13 +77,11 @@ export default {
                 const response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
 
                 
-                /*console.log(`response.data=${response.data}`);
-                console.log(`response.data[0]=${response.data[0]}`);*/
-                console.log(`response.data[1]=${response.data[1]}`);  
+                if(response.data.success) console.log("success",response.data.success);
+                else throw new Error(response.data.error);
             } 
             catch (error) {
-                // Gestion des erreurs en cas d'échec de la connexion
-                console.error('Erreur de connexion:', error);
+                console.error('Erreur de profile:', error);
             }
         },
         async reset(){
@@ -93,28 +92,16 @@ export default {
             file_input.click();
         },
         handleFileChange(event) {
-            // Obtenir la liste des fichiers sélectionnés
             const fileList = event.target.files;
-            // Vérifier s'il y a des fichiers
             if (fileList.length > 0) {
-                // Obtenir le nom du premier fichier
                 this.user.image = fileList[0].name;
             } 
             else {
                 console.log("Aucun fichier sélectionné");
             }
         },
-        visualiser(){
-            const eye_icon=$('.eye_icon');
-            const profile_mdp = $('#profile-mdp');
-            if (profile_mdp.prop('type') === 'password') {
-                profile_mdp.prop('type','text');
-                eye_icon.addClass('ri-eye-off-fill');
-            } 
-            else {
-                profile_mdp.prop('type','password');
-                eye_icon.removeClass('ri-eye-off-fill');
-            } 
+        edit_mdp(){
+            $('.edit_mdp').addClass("show_edit_mdp");          
         }
     }
 }
