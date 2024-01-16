@@ -311,6 +311,9 @@
     .profile_buttons {
         display: inline-flex;
     }
+    .profile_button{
+        padding: 0.25rem;
+    }
     .profile_photo {
         padding-top: 0px;
         row-gap: 1.5rem;

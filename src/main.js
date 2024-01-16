@@ -28,8 +28,4 @@ import store from './store'
 
 const app = createApp(App);
 
-app.config.globalProperties.$prixDA = function(prix) {
-    return prix.toString() + ".00 DA";
-};
-
 app.use(store).use(router).mount('#app');

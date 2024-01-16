@@ -1,12 +1,13 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 import axios from 'axios';
+import {loadImage, prixDA} from '@/assets/js/global.js';
 
 export default createStore({
   state: {
     baseURL: "http://localhost:80/server/Djennat_Green_Art/v2/php",
     produits:[],
     commandes:[],
-    user:{image:"profile.png"},
+    user:{image:loadImage("clt",null)},
     panier:[],
     searchQuery:""
   },
@@ -21,25 +22,33 @@ export default createStore({
       return "token0001";
     },
     cartCount:(state)=>{
-      let cartCount=0;
+      /*let cartCount=0;
       for(const i in state.panier){
         cartCount+=state.panier[i].quantite;
-      }
-      return cartCount;
+      }*/
+      return state.panier.length;
     }
   },
 
   mutations: {
     setProduits(state, produits) {
+      produits.forEach(prd => {
+        prd.prix=prixDA(prd.prix);
+        prd.image=loadImage("produits",prd.image);
+      });
       state.produits = produits;
     },
     setCommandes(state, commandes) {
+      commandes.forEach(comm => {
+        comm.total=prixDA(comm.total);
+        comm.lignes.forEach((ligne)=>{
+          ligne.image=loadImage("produits",ligne.image);
+        });
+      });
       state.commandes = commandes;
     },
     setUser(state, user) {
-      if(user.image==null){
-        user.image="profile.png";
-      }
+      user.image=loadImage("clt",user.image);
 
       const originalDate = new Date(user.date_creation);
       const day = originalDate.getDate().toString().padStart(2, '0');
@@ -50,6 +59,9 @@ export default createStore({
       state.user = user;
     },
     setPanier(state, panier) {
+      panier.forEach((ligne)=>{
+        ligne.image=loadImage("produits",ligne.image);
+      });
       state.panier = panier;
     },
     supprimerDuPanier(state, id_produit) {

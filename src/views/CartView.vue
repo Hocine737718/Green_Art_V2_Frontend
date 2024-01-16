@@ -26,13 +26,13 @@
                             {{ ligne.num }}
                         </td>
                         <td class="cart_td">
-                            <img :src="require(`@/assets/img/produits/${ligne.image}`)" width="70px" height="70px" alt="image produit">
+                            <img :src="ligne.image" width="70px" height="70px" alt="image produit">
                         </td>
                         <td class="cart_td">
                             {{ ligne.titre }}
                         </td>
                         <td class="cart_td">
-                            {{ this.$prixDA(ligne.prix) }}
+                            {{ usePrixDA(ligne.prix) }}
                         </td>
                         <td class="cart_td">
                             <div class="cart_q">
@@ -42,7 +42,7 @@
                             </div>
                         </td>
                         <td class="cart_td cart_prix">
-                            {{ this.$prixDA(ligne.prix*ligne.quantite) }}
+                            {{ usePrixDA(ligne.prix*ligne.quantite) }}
                         </td>
                         <td class="cart_td">
                             <i class="ri-delete-bin-2-fill del" @click="del(ligne.id_produit)"></i>
@@ -50,7 +50,7 @@
                     </tr>
                     <tr v-if="lignes.length!=0">
                         <td class="cart_td" style="border-top: 2px solid black;text-align: right;width:100%;" colspan="5">Total :</td>
-                        <td class="cart_td cart_prix" style="border-top: 2px solid black;">{{this.$prixDA(this.total)}}</td>
+                        <td class="cart_td cart_prix" style="border-top: 2px solid black;">{{this.total}}</td>
                         <td class="cart_td" style="border-top: 2px solid black;"></td>
                     </tr>
                 </tbody>
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import {prixDA} from '@/assets/js/global.js';
 import axios from 'axios';
 export default {
     name: 'CartView',
@@ -89,13 +90,16 @@ export default {
         total(){
             var total=0;
             for(let i in this.lignes) total+=Number(this.lignes[i].prix*this.lignes[i].quantite);
-            return total;
+            return prixDA(total);
         },
         token(){
             return this.$store.getters.token;
         }
     },
     methods:{
+        usePrixDA(x){
+            return prixDA(x);
+        },
         async add(id_produit){
             const ligneTrouvee = this.lignes.find(ligne => ligne.id_produit === id_produit);
             ligneTrouvee.quantite++;
@@ -105,7 +109,9 @@ export default {
                 data.append('q_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit, quantite: ligneTrouvee.quantite}));
                 const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
 
-                if(response.data.success) console.log("success",response.data.success)
+                if(response.data.success){
+                    console.log("success",response.data.success);
+                } 
                 else throw new Error(response.data.error);
             }
             catch (error) {

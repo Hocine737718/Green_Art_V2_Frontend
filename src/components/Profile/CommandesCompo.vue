@@ -39,7 +39,7 @@
                             <td class="commandes_td">{{ commande.etat }}</td>
                             <td class="commandes_td">{{ commande.addresse }}</td>
                             <td class="commandes_td">{{ commande.telephone }}</td>
-                            <td class="commandes_td">{{this.$prixDA(commande.total)}}</td>
+                            <td class="commandes_td">{{commande.total}}</td>
                             <td class="commandes_td" @click="setNumCommande(commande.num)"><i class="ri-eye-fill"></i> Voir</td>
                         </tr>
                     </tbody>

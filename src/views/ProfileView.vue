@@ -2,9 +2,9 @@
     <section class="profile section container" id="profile">
         <div class="profile_container grid">
             <h1 class="profile_header">Profile</h1>
-            <form @submit.prevent="sauvegarder" class="profile_form grid">
+            <div class="profile_form grid">
                 <div class="profile_photo">
-                    <img :src="require(`@/assets/img/clt/${this.user.image}`)" alt="photo profile">
+                    <img :src="this.user.image" alt="photo profile">
                     <button class="profile_button" @click="selectionner_image">
                         <i class="ri-edit-2-fill"></i>
                         Modifier
@@ -33,7 +33,7 @@
                         <i class="ri-mail-fill"></i>
                     </div>
                     <div class="profile_buttons">
-                        <button type="submit" class="profile_button">
+                        <button @click="sauvegarder" class="profile_button">
                             <i class="ri-save-2-fill"></i>
                             Sauvegarder 
                         </button>
@@ -43,7 +43,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
             <div class="profile_mdp">
                 <div class="profile_ligne"></div>
                 <span @click="edit_mdp()">Vous pouvez modifier votre mot de passe ici.</span>
@@ -56,15 +56,24 @@
 <script>
 import $ from 'jquery';
 import axios from 'axios';
+import {loadImage}  from '@/assets/js/global.js';
 import CommandesCompo from '@/components/Profile/CommandesCompo.vue';
 import EditMdpCompo from '@/components/Profile/EditMdpCompo.vue';
 export default {
     name: 'ProfileView',
+    data(){
+        return{
+            selected_img:null
+        }
+    },
     components:{
         EditMdpCompo,
         CommandesCompo
     },
     computed:{
+        token() {
+            return this.$store.getters.token;
+        },
         user() {
             return this.$store.state.user;
         }
@@ -72,16 +81,29 @@ export default {
     methods:{
         async sauvegarder(){
             try {
-                const data = new URLSearchParams();
+                var data = new URLSearchParams();
+                this.user.token=this.token;
                 data.append('edit_profil', JSON.stringify(this.user));
-                const response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
+                var response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
 
-                
                 if(response.data.success) console.log("success",response.data.success);
                 else throw new Error(response.data.error);
+                if(this.selected_img!=null){
+                    data = new FormData();
+                    data.append('edit_image', `{"token":"${this.token}"}`);
+                    data.append('profile_img', this.selected_img);
+
+                    response = await axios.post(`${this.$store.state.baseURL}/edit_image.php`, data);
+
+                    if(response.data.success){
+                        console.log("success",JSON.stringify(response.data).success);
+                        this.user.image = loadImage('clt',response.data.profile_img);
+                    } 
+                    else throw new Error(response.data.error);
+                }
             } 
             catch (error) {
-                console.error('Erreur de profile:', error);
+                console.error(JSON.stringify(response.data).error);
             }
         },
         async reset(){
@@ -91,18 +113,32 @@ export default {
             var file_input = document.getElementById("file_input");
             file_input.click();
         },
-        handleFileChange(event) {
-            const fileList = event.target.files;
-            if (fileList.length > 0) {
-                this.user.image = fileList[0].name;
-            } 
-            else {
-                console.log("Aucun fichier sélectionné");
+        async handleFileChange(event) {
+            try{
+                const fileList = event.target.files;
+                if (fileList.length > 0) 
+                {
+                    this.selected_img=fileList[0];
+                    if(this.selected_img.type !== "image/jpeg" && 
+                       this.selected_img.type !== "image/png" &&
+                       this.selected_img.type !== "image/jpg")
+                    {
+                        throw new Error("Erreur Type Image");
+                    }
+                }
+                else
+                {
+                    console.log("Aucun fichier sélectionné");
+                }
+            }
+            catch (error) {
+                this.selected_img=null;
+                console.error(error);
             }
         },
         edit_mdp(){
             $('.edit_mdp').addClass("show_edit_mdp");          
         }
-    }
+    },
 }
 </script>
