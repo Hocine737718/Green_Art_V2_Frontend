@@ -7,6 +7,7 @@ import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import ForgotView from '../views/ForgotView.vue'
+import GoogleCallback from '@/views/callback/GoogleCallback.vue'
 const routes = [
   {
     path: '/',
@@ -47,6 +48,11 @@ const routes = [
     path: '/forgot',
     name: 'forgot',
     component: ForgotView
+  },
+  {
+    path: '/callback_google',
+    name: 'callback_google',
+    component: GoogleCallback
   }
 ]
 

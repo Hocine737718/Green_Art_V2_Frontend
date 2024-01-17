@@ -23,9 +23,9 @@
                                 <td class="lignes_td">{{ ligne.num }}</td>
                                 <td class="lignes_td">{{ ligne.titre }}</td>
                                 <td class="lignes_td"><img :src="ligne.image" width="70px" height="70px" alt="image produit"></td>
-                                <td class="lignes_td">{{prixDA(ligne.prix)}}</td>
+                                <td class="lignes_td">{{usePrixDA(ligne.prix)}}</td>
                                 <td class="lignes_td">{{ ligne.quantite }}</td>
-                                <td class="lignes_td">{{prixDA(ligne.total)}}</td>
+                                <td class="lignes_td">{{usePrixDA(ligne.total)}}</td>
                             </tr>
                             <tr>
                                 <td class="lignes_td" style="text-align: right;width:100%;" colspan="5">Total</td>
@@ -47,6 +47,9 @@ export default {
     name: 'LignesCommandeCompo',
     props: ["lignes"],
     methods:{
+        usePrixDA(x){
+            return prixDA(x);
+        },
         close(){
             $('.lignes_commande').removeClass('show_lignes');
             $('main').removeClass('fix_height');

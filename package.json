@@ -11,6 +11,7 @@
     "axios": "^1.6.3",
     "core-js": "^3.8.3",
     "jquery": "^3.7.1",
+    "oidc-client": "^1.11.5",
     "scrollreveal": "^4.0.9",
     "vue": "^3.2.13",
     "vue-cli": "^2.9.6",

@@ -49,6 +49,9 @@
     .cart_th {
         min-width: 100px;
     } 
+    .product_container{
+        grid-template-columns: repeat(3, 190px);
+    }
 }
 @media (max-width: 799px){
     :root {
@@ -68,7 +71,7 @@
         padding: 5rem 0 1rem;
     }
     .product_container{
-        grid-template-columns: repeat(3, 150px);
+        grid-template-columns: repeat(3, 160px);
     }
     .nav_list {
         column-gap: 0.7rem;
@@ -291,8 +294,11 @@
         align-items: center;
         justify-content: space-between;
         padding-inline: 1rem;
-        grid-template-columns: max-content 80px auto;
+        grid-template-columns: max-content 120px auto;
         overflow: hidden;
+    }
+    .profile_labels:first-child {
+        grid-template-columns: max-content 80px auto;
     }
     .profile_box label, .profile_labels label{
         font-size: 0.75rem;
@@ -317,9 +323,7 @@
     .profile_photo {
         padding-top: 0px;
         row-gap: 1.5rem;
-    }
-    .profile_photo img{
-        max-width: 85%;
+        padding: 15px;
     }
     .profile_photo .profile_button {
         padding: 0.25rem;
@@ -351,6 +355,9 @@
     }
     .cart_inputs input{
         width:100%;
+    }
+    .edit_mdp_container {
+        padding: 1.5rem 1rem;
     }
 }
 @media (max-width: 365px){

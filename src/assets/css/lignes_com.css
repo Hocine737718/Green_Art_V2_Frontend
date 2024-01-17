@@ -7,7 +7,7 @@
     background-color: hsla(230, 75%, 15%, .1);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px); /* For safari */
-    padding: 5rem 1.5rem 0;
+    padding: 5rem 1.5rem;
     opacity: 0;
     pointer-events: none;
     transition: opacity .4s;
@@ -28,13 +28,13 @@
     top: 2rem;
     right: 2rem;
     font-size: 1.5rem;
-    color: var(--title-color);
+    color: var(--text-color);
     cursor: pointer;
 }
 .lignes_container{
     display: grid;
     background-color: var(--container-color);
-    padding: 2rem 1.5rem 2.5rem;
+    padding: 2.5rem 0;
     box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
     border-radius: 1rem;
     row-gap: 1.25rem;
@@ -57,6 +57,8 @@
 }
 .lignes_table{
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .lignes_infos::-webkit-scrollbar{
     width: 0.5rem;
@@ -72,18 +74,27 @@
 }
 .lignes_table, .lignes_th, .lignes_td {
     border-collapse: collapse;
-    padding: 1rem;
-    text-align: left;
+    padding: 0.5rem;
+    text-align: center;
 }
 .lignes_th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: var(--first-color-lighten);
+    background-color: var(--first-color-light);
     cursor: pointer;
     text-transform: capitalize;
-    min-width: 100px;
     font-size: 0.9rem;
+    min-width: max-content;
+}
+.lignes_th:nth-last-child(2){
+    max-width: 70px;
+}
+.lignes_td:nth-last-child(2){
+    max-width: 70px;
+}
+.lignes_th:nth-child(2),.lignes_th:nth-child(4),.lignes_th:last-child {
+    min-width: 120px;
 }
 .lignes_tbody tr {
     --delay: .1s;

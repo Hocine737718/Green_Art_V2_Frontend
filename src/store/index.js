@@ -15,17 +15,14 @@ export default createStore({
   getters: {
     token:()=>{
       const token = localStorage.getItem('token');
+      console.log("flag 00");
       if (token !== null && token !== undefined && token!="") {
+        console.log("flag 01");
         return token;
       }
-      //return null;
-      return "token0001";
+      return null;
     },
     cartCount:(state)=>{
-      /*let cartCount=0;
-      for(const i in state.panier){
-        cartCount+=state.panier[i].quantite;
-      }*/
       return state.panier.length;
     }
   },
@@ -70,8 +67,7 @@ export default createStore({
     search(state, s){
       state.searchQuery=s;
     },
-    logout(state){
-      state.token="";
+    logout(){
       localStorage.removeItem('token');
     }
   },
@@ -127,6 +123,22 @@ export default createStore({
       } 
       catch (error) {
         console.error("Erreur Get Panier:", error);
+      }
+    },
+    async login(context,{ email, mdp }){
+      try {
+        const data = new URLSearchParams();
+        data.append('login_email', JSON.stringify({ email: email, mdp: mdp }));
+        const response = await axios.post(`${context.state.baseURL}/login_email.php`, data);
+        if(response.data.success){
+          console.log("success",response.data.success);
+          localStorage.setItem("token", response.data.success);
+          window.location = "/";
+        }
+        else throw new Error(response.data);
+      } 
+      catch (error) {
+        console.error('Erreur de connexion:', error);
       }
     }    
   }

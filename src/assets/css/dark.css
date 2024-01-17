@@ -15,8 +15,11 @@ body.dark-theme{
 .dark-theme .product_circle{
     background-color: var(--container-color);
 }
-.dark-theme .lignes_container,.dark-theme  .edit_mdp_container{
+.dark-theme  .edit_mdp_container{
     background-color: hsl(0deg 0% 55.69% / 97%);
+}
+.dark-theme .lignes_container{
+    background-color: #a6a6a6;
 }
 .dark-theme .nav_cart_count{
     color: black;

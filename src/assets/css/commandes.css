@@ -28,7 +28,7 @@
     box-shadow: 0 .1rem .4rem #0002;
 }
 .commandes_header .input-group i {
-    color: var(--title-color);
+    color: var(--text-color);
     cursor: pointer;
     font-size: x-large;
     transition: .3s;
@@ -41,7 +41,7 @@
     outline: none;
 }
 .commandes_header .input-group input::placeholder {
-    color: var(--title-color);
+    color: var(--text-color-alt);
 }
 .commandes_header .input-group img {
     width: 1.2rem;
@@ -128,16 +128,17 @@
 .commandes_table, .commandes_th, .commandes_td {
     border-collapse: collapse;
     padding: 1rem;
-    text-align: left;
+    text-align: left;   
 }
 .commandes_th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: var(--first-color-lighten);
+    background-color: var(--first-color-light);
     cursor: pointer;
     text-transform: capitalize;
     min-width: 100px;
+    color:var(--text-color-alt);
 }
 .commandes_tbody tr {
     --delay: .1s;
@@ -149,23 +150,23 @@
 .commandes_tbody tr td{
     transition: .2s ease-in-out;
 }
-.etat {
+.state {
     padding: .4rem 0;
     border-radius: 2rem;
     text-align: center;
 }
-.etat.delivered {
+.state.delivered {
     background-color: #86e49d;
     color: #006b21;
 }
-.etat.cancelled {
+.state.cancelled {
     background-color: #d893a3;
     color: #b30021;
 }
-.etat.pending {
+.state.pending {
     background-color: #ebc474;
 }
-.etat.shipped {
+.state.shipped {
     background-color: #6fcaea;
 }
 .commandes_th span.icon-arrow {
@@ -181,28 +182,28 @@
     font-family: sans-serif;
 }
 .commandes_th:hover span.icon-arrow{
-    border: 1.4px solid var(--first-color-alt);
+    border: 1.4px solid var(--first-color);
 }
 .commandes_th:hover {
-    color:var(--first-color);
+    color:var(--container-color);
 }
 .commandes_th.active span.icon-arrow{
-    background-color: var(--first-color-light);
-    color: var(--first-color-alt);
+    background-color: var(--first-color);
+    color: var(--text-color-alt);
 }
 .commandes_th.desc span.icon-arrow{
     transform: rotate(180deg);
 }
 .commandes_th.active {
-    color: var(--first-color-alt);
+    color: var(--placeholder-color);
 }
 .commandes_container tbody td.active {
-    color: var(--first-color-alt);
+    color: var(--placeholder-color);
     font-weight: bold;
 }
 .commandes_container tbody i {
     cursor: pointer;
 }
 .commandes_container tbody i:hover {
-    color: var(--first-color-alt);
+    color: var(--placeholder-color);
 }

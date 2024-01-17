@@ -20,6 +20,9 @@
 .profile_photo img{
     border-radius: 120px; /* ajustez la valeur selon vos préférences */
     overflow: hidden;
+    max-width: 200px;
+    max-height: 200px;
+    justify-self: center;
 }
 .profile_form{
     grid-template-columns: 312px 1fr;
@@ -68,6 +71,7 @@
     grid-template-columns: 30px 90px;
     align-items: center;
     justify-content: center;
+    justify-self: center;
 }
 .profile_button i,.profile_box i {
     font-size: 1rem;

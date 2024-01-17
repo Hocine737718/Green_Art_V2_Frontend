@@ -89,6 +89,7 @@ export default {
                 if(response.data.success) console.log("success",response.data.success);
                 else throw new Error(response.data.error);
                 if(this.selected_img!=null){
+                    console.log("flg 02");
                     data = new FormData();
                     data.append('edit_image', `{"token":"${this.token}"}`);
                     data.append('profile_img', this.selected_img);
@@ -119,11 +120,16 @@ export default {
                 if (fileList.length > 0) 
                 {
                     this.selected_img=fileList[0];
+                    console.log("flg 01");
                     if(this.selected_img.type !== "image/jpeg" && 
                        this.selected_img.type !== "image/png" &&
                        this.selected_img.type !== "image/jpg")
                     {
                         throw new Error("Erreur Type Image");
+                    }
+                    else
+                    {
+                        this.sauvegarder();
                     }
                 }
                 else
