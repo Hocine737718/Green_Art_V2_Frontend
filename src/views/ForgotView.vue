@@ -39,7 +39,7 @@
 
 <script>
 import $ from 'jquery';
-import axios from 'axios';
+import { useAxios } from '@/assets/js/global';
 export default {
     name: 'ForgotView',
     data(){
@@ -63,20 +63,35 @@ export default {
                 new_mdp.removeClass('show_new_mdp');               
             }
 
-            const data = new URLSearchParams();
-            data.append('forgot', JSON.stringify({email:this.email}));
-            const response = await axios.post(`${this.$store.state.baseURL}/forgot.php`, data);
-
-            if(response.data.success) console.log(response.data.success);
-            else throw new Error(response.data.error);
+            const dataLabel="forgot_mdp";
+            const dataContent=`{
+                                "email":"${this.email}"
+                                }`;
+            const serverUrl=`${this.$store.state.baseURL}/forgot_mdp.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){
+                console.log("Forgot -> ",res.msg);
+            }
+            else{
+                console.error("Forgot -> ",res.msg);
+            }
         },
         async action_new_mdp(){
-            const data = new URLSearchParams();
-            data.append('new_mdp', JSON.stringify({code_recup:this.code_recup, mdp:this.mdp, remdp:this.remdp}));
-            const response = await axios.post(`${this.$store.state.baseURL}/new_mdp.php`, data);
-
-            if(response.data.success) this.$router.push({ name: "login" });
-            else throw new Error(response.data.error);
+            const dataLabel="new_mdp";
+            const dataContent=`{
+                                "code_recup":"${this.code_recup}",
+                                "mdp":"${this.mdp}",
+                                "remdp":"${this.remdp}"
+                                }`;
+            const serverUrl=`${this.$store.state.baseURL}/new_mdp.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){                
+                console.log("New Mdp-> ",res.msg);
+                this.$router.push({ name: "login" });
+            }
+            else{
+                console.error("New Mdp -> ",res.msg);
+            }
         },
         action_retour(){
             var forgot=$('.forgot_container');

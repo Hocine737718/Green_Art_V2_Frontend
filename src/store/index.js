@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 import {loadImage, prixDA} from '@/assets/js/global.js';
+import { useAxios } from '@/assets/js/global';
 
 export default createStore({
   state: {
@@ -15,9 +16,7 @@ export default createStore({
   getters: {
     token:()=>{
       const token = localStorage.getItem('token');
-      console.log("flag 00");
       if (token !== null && token !== undefined && token!="") {
-        console.log("flag 01");
         return token;
       }
       return null;
@@ -126,20 +125,36 @@ export default createStore({
       }
     },
     async login(context,{ email, mdp }){
-      try {
-        const data = new URLSearchParams();
-        data.append('login_email', JSON.stringify({ email: email, mdp: mdp }));
-        const response = await axios.post(`${context.state.baseURL}/login_email.php`, data);
-        if(response.data.success){
-          console.log("success",response.data.success);
-          localStorage.setItem("token", response.data.success);
-          window.location = "/";
-        }
-        else throw new Error(response.data);
-      } 
-      catch (error) {
-        console.error('Erreur de connexion:', error);
+      const dataLabel="login_email";
+      const dataContent=`{
+                          "email":"${email}",
+                          "mdp":"${mdp}"
+                        }`;
+      const serverUrl=`${context.state.baseURL}/login_email.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){                
+        console.log("Login-> ",res.msg);
+        localStorage.setItem("token", res.data);
+        window.location = "/";
       }
-    }    
+      else{
+        console.error("Login -> ",res.msg);
+      }      
+    },
+    async logout(context){
+      const dataLabel="logout";
+      const dataContent=`{
+                          "token":"${context.getters.token}"
+                        }`;
+      const serverUrl=`${context.state.baseURL}/logout.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){                
+        console.log("Logout-> ",res.msg);
+        window.location = "/login";
+      }
+      else{
+        console.error("Login -> ",res.msg);
+      }      
+    }   
   }
 })

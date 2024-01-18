@@ -1,6 +1,6 @@
 <template>
     <section class="signup section container" id="signup">
-        <form @submit.prevent="action_signup" class="signup_container grid">
+        <form @submit.prevent="signup" class="signup_container grid">
             <h1 class="signup_title">Inscription</h1>
             <div class="signup_inputs">
                 <div class="signup_box">
@@ -32,7 +32,7 @@
     </section>
 </template>
 <script>
-import axios from 'axios';
+import { useAxios } from '@/assets/js/global';
 export default {
     name: 'SignupView',
     data() {
@@ -45,21 +45,23 @@ export default {
         };
     },
     methods:{
-        async action_signup(){
-            try {
-                const data = new URLSearchParams();
-                data.append('inscription', JSON.stringify({ nom:this.nom, prenom:this.prenom, email: this.email, mdp: this.mdp, remdp: this.remdp  }));
-                const response = await axios.post(`${this.$store.state.baseURL}/signup.php`, data);
-
-                /*console.log(`response.data=${response.data}`);
-                console.log(`response.data[0]=${response.data[0]}`);*/
-                console.log(`response.data[1]=${response.data[1]}`);
-
+        async signup(){
+            const dataLabel="signup";
+            const dataContent=`{
+                                "nom":"${this.nom}",
+                                "prenom":"${this.prenom}",
+                                "email":"${this.email}",
+                                "mdp":"${this.mdp}",
+                                "remdp":"${this.remdp}"
+                                }`;
+            const serverUrl=`${this.$store.state.baseURL}/signup.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){
+                console.log("Signup -> ",res.msg);
                 this.$router.push({ name: "login" });
-            } 
-            catch (error) {
-                // Gestion des erreurs en cas d'échec de la inscription
-                console.error("Erreur d'inscription:", error);
+            }
+            else{
+                console.error("Signup -> ",res.msg);
             }
         }
     },

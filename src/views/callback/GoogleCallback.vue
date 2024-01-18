@@ -5,6 +5,7 @@
 <script>
 import userManager from '@/google-auth-config';
 import axios from 'axios';
+import { useAxios } from '@/assets/js/global';
 export default {
     name: "GoogleCallback",
     data(){
@@ -16,24 +17,22 @@ export default {
     },
     methods:{
         async signup(){
-            try {
-                const data = new URLSearchParams();
-                data.append('signin_google', JSON.stringify({ nom:this.nom, prenom:this.prenom, email: this.email  }));
-                const response = await axios.post(`${this.$store.state.baseURL}/signin_google.php`, data);
-                
-                if(response.data.success){
-                    console.log("success",response.data.success);
-                    localStorage.setItem("token", response.data.success);
-                }
-                else throw new Error(response.data);
-            } 
-            catch (error) {
-                // Gestion des erreurs en cas d'échec de la inscription
-                console.error("Erreur d'inscription:", error);
+            const dataLabel="signin_google";
+            const dataContent=`{
+                                "email":"${this.email}",
+                                "nom":"${this.nom}",
+                                "prenom":"${this.prenom}"
+                                }`;
+            const serverUrl=`${this.$store.state.baseURL}/signin_google.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){
+                console.log("Signin Google -> ",res.msg);
+                localStorage.setItem("token", res.data);
             }
-            finally{
-                window.location='/';
+            else{
+                console.error("Signin Google -> ",res.msg);
             }
+            window.location='/';
         },
         signupUserInApi(){
             userManager.signinRedirectCallback().then(() => {
@@ -62,14 +61,14 @@ export default {
                         }
                         catch (err) {
                             window.location='/';
-                            alert('Erreur getUser : '+err);
+                            console.error('Signin Google -> '+err);
                         }
                     }
                 })
             })
             .catch((e)=>{
                 window.location='/';
-                alert('Erreur signinRedirectCallback : '+e);
+                console.error('Signin Google -> '+e);
             });
         },
     }
