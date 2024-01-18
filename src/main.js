@@ -21,6 +21,7 @@ import './assets/css/dark.css';
 import './assets/css/media.css';
 import './assets/css/button.css';
 import './assets/css/scrollup.css';
+import './assets/css/swal/loading.css';
 
 import './assets/js/mon-jquery.js';
 

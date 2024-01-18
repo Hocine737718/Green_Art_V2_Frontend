@@ -150,6 +150,7 @@ export default createStore({
       const res=await useAxios(dataLabel,dataContent,serverUrl);
       if(!res.error){                
         console.log("Logout-> ",res.msg);
+        localStorage.removeItem("token");
         window.location = "/login";
       }
       else{

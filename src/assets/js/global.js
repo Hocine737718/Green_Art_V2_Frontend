@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 export function loadImage(rep, file) {
     let img=require(`@/assets/img/${rep}/none.png`);
     if(file!=null)
@@ -18,7 +19,36 @@ export function prixDA(prix) {
     return prix.toString() + ".00 DA";
 }
 
+function setUpLoading(){
+  var custom_loader=`
+  <div class="loading"></div>
+  `;
+  axios.interceptors.request.use((config) => {
+    Swal.fire({
+      html: custom_loader,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    });
+    return config;
+  });
+
+  axios.interceptors.response.use(
+    (response) => {
+      Swal.close();
+      return response;
+    },
+    (error) => {
+      Swal.close();
+      return Promise.reject(error);
+    }
+  );
+}
+
 export async function useAxios(dataLabel,dataContent,serverUrl){
+  setUpLoading();
   const res={error:false,msg:"",content:null};
   try {
     const data = new FormData();
