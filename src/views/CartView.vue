@@ -73,8 +73,7 @@
 </template>
 
 <script>
-import {prixDA} from '@/assets/js/global.js';
-import axios from 'axios';
+import {useAxios,prixDA} from '@/assets/js/global.js';
 export default {
     name: 'CartView',
     data(){
@@ -105,30 +104,36 @@ export default {
             ligneTrouvee.quantite++;
 
             try{
-                const data = new URLSearchParams();
-                data.append('q_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit, quantite: ligneTrouvee.quantite}));
-                const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
-
-                if(response.data.success){
-                    console.log("success",response.data.success);
+                const dataLabel="q_ligne_panier";
+                const dataContent=`{"token":"${this.token}","id_produit":"${id_produit}","quantite":"${ligneTrouvee.quantite}"}`;
+                const serverUrl=`${this.$store.state.baseURL}/q_ligne_panier.php`;
+                const res=await useAxios(dataLabel,dataContent,serverUrl);
+                if(!res.error){
+                    console.log("Edit Quantite -> ",res.msg);
+                }
+                else{
+                    console.error("Edit Quantite -> ",res.msg);
                 } 
-                else throw new Error(response.data.error);
             }
             catch (error) {
                 console.error('Erreur de connexion:', error);
-            }
+            } 
         },
         async sub(id_produit){
             const ligneTrouvee = this.lignes.find(ligne => ligne.id_produit === id_produit);
             if(ligneTrouvee.quantite>1){
                 ligneTrouvee.quantite--;
                 try{
-                    const data = new URLSearchParams();
-                    data.append('q_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit, quantite: ligneTrouvee.quantite}));
-                    const response = await axios.post(`${this.$store.state.baseURL}/q_ligne_panier.php`, data);
-
-                    if(response.data.success) console.log("success",response.data.success)
-                    else throw new Error(response.data.error);
+                    const dataLabel="q_ligne_panier";
+                    const dataContent=`{"token":"${this.token}","id_produit":"${id_produit}","quantite":"${ligneTrouvee.quantite}"}`;
+                    const serverUrl=`${this.$store.state.baseURL}/q_ligne_panier.php`;
+                    const res=await useAxios(dataLabel,dataContent,serverUrl);
+                    if(!res.error){
+                        console.log("Edit Quantite -> ",res.msg);
+                    }
+                    else{
+                        console.error("Edit Quantite -> ",res.msg);
+                    } 
                 }
                 catch (error) {
                     console.error('Erreur de connexion:', error);
@@ -139,12 +144,16 @@ export default {
             try{
                 this.$store.commit('supprimerDuPanier', id_produit);
 
-                const data = new URLSearchParams();
-                data.append('del_ligne_panier', JSON.stringify({token:this.token, id_produit: id_produit }));
-                const response = await axios.post(`${this.$store.state.baseURL}/del_ligne_panier.php`, data);
-
-                if(response.data.success) console.log("success",response.data.success)
-                else throw new Error(response.data.error);
+                const dataLabel="del_ligne_panier";
+                const dataContent=`{"token":"${this.token}","id_produit":"${id_produit}"}`;
+                const serverUrl=`${this.$store.state.baseURL}/del_ligne_panier.php`;
+                const res=await useAxios(dataLabel,dataContent,serverUrl);
+                if(!res.error){
+                    console.log("Del Ligne -> ",res.msg);
+                }
+                else{
+                    console.error("Del Ligne -> ",res.msg);
+                }                 
             }
             catch (error) {
                 console.error('Erreur de connexion:', error);
@@ -153,14 +162,17 @@ export default {
         async validerCommande(){
             if(this.lignes.length!=0){
                 try{
-                    const data = new URLSearchParams();
-                    data.append('add_commande', JSON.stringify({token:this.token, lignes:this.lignes,addresse:this.addresse, telephone:this.telephone }));
-                    const response = await axios.post(`${this.$store.state.baseURL}/add_commande.php`, data);
-                    
-                    if(response.data.success){
-                        location.reload();                   
+                    const dataLabel="add_commande";
+                    const dataContent=`{"token":"${this.token}", "lignes":${JSON.stringify(this.lignes)}, "addresse":"${this.addresse}", "telephone":"${this.telephone}"}`;
+                    const serverUrl=`${this.$store.state.baseURL}/add_commande.php`;
+                    const res=await useAxios(dataLabel,dataContent,serverUrl);
+                    if(!res.error){
+                        console.log("Add Command -> ",res.msg);
+                        location.reload();
                     }
-                    else throw new Error(response.data.error);
+                    else{
+                        console.error("Add Command -> ",res.msg);
+                    } 
                 }
                 catch (error) {
                     console.error('Erreur de connexion:', error);

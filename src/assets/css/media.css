@@ -29,8 +29,8 @@
     .product_description {
         padding: 0 8rem;
     }
-    .commandes_container td:not(:first-of-type) {
-        min-width: 12.1rem;
+    .commandes_container td{
+        min-width: 10rem;
     }
     .cart_th {
         min-width: 105px;

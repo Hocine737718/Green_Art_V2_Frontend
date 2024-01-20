@@ -27,7 +27,7 @@
 
 <script>
 import $ from 'jquery'
-import axios from 'axios';
+import {useAxios}  from '@/assets/js/global.js';
 export default {
     name: 'EditMdpCompo',
     data(){
@@ -45,23 +45,22 @@ export default {
     methods:{
         close(){
             $('.edit_mdp').removeClass("show_edit_mdp");  
+            $('main').removeClass('fix_height');
         },
         async sauvegarder(){
-            try {
-                const data = new URLSearchParams();
-                data.append('edit_mdp', JSON.stringify({token:this.token,mdp:this.mdp,new_mdp:this.new_mdp,re_new_mdp:this.re_new_mdp}));
-                const response = await axios.post(`${this.$store.state.baseURL}/edit_mdp.php`, data);
-
-                if(response.data.success){
-                    console.log("success",response.data.success);
-                    this.mdp="";this.re_new_mdp="";this.new_mdp="";
-                    $('.edit_mdp').removeClass("show_edit_mdp"); 
-                } 
-                else throw new Error(response.data.error);
-            } 
-            catch (error) {
-                console.error('Erreur de connexion:', error);
-            }            
+            const dataLabel="edit_mdp";
+            const dataContent=`{"token":"${this.token}","mdp":"${this.mdp}","new_mdp":"${this.new_mdp}","re_new_mdp":"${this.re_new_mdp}"}`;
+            const serverUrl=`${this.$store.state.baseURL}/edit_mdp.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){
+                console.log("Edit Password -> ",res.msg);
+                this.mdp="";this.re_new_mdp="";this.new_mdp="";
+                $('.edit_mdp').removeClass("show_edit_mdp"); 
+                $('main').removeClass('fix_height');
+            }
+            else{
+                console.error("Edit Password -> ",res.msg);
+            }                       
         }
     }
     

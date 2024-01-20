@@ -20,10 +20,12 @@ export default {
     methods:{
         closeSearch(){
             $('.search').removeClass('show_search');
+            $('main').removeClass('fix_height');
         },
         clickSearch(){
             this.$store.commit('search',this.search);
             $('.search').removeClass('show_search');
+            $('main').removeClass('fix_height');
             this.$router.push({ name: "products" });
         }
     }

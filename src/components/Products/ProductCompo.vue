@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {useAxios}  from '@/assets/js/global.js';
 export default {
   name: "ProductCompo",
   props: ["produit"],
@@ -21,20 +21,22 @@ export default {
   methods:{
     async ajouterAuPanier(){
       if(this.token){
-        try{
-          const data = new URLSearchParams();
-          data.append('add_ligne_panier', JSON.stringify({token:this.token, id_produit: this.produit.id}));
-          const response = await axios.post(`${this.$store.state.baseURL}/add_ligne_panier.php`, data);
-
-          if(response.data.success) this.$store.dispatch('getPanier');
-          else throw new Error(response.data.error);
+        const dataLabel="add_ligne_panier";
+        const dataContent=`{"token":"${this.token}", "id_produit": "${this.produit.id}"}`;
+        const serverUrl=`${this.$store.state.baseURL}/add_ligne_panier.php`;
+        const res=await useAxios(dataLabel,dataContent,serverUrl);
+        if(!res.error)
+        {
+          console.log("Add Cart -> ",res.msg);
+          this.$store.dispatch('getPanier');
         }
-        catch (error) {
-          console.error("Erreur Ajouter Au Panier:", error);
-        }        
+        else
+        {
+          console.error("Add Cart -> ",res.msg);
+        }
       }
       else{
-        console.error("Erreur Ajouter Au Panier:", "Il faut se connecter d'abord !");
+        console.error("Add Cart -> ", "Il faut se connecter d'abord !!");
       }
     }
   }

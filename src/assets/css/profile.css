@@ -65,7 +65,7 @@
     background-color: hsl(var(--hue), 78%, 55%);
     border-radius: 4rem;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 300;
     cursor: pointer;
     display: grid;
     grid-template-columns: 30px 90px;

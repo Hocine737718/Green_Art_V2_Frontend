@@ -36,7 +36,9 @@
                         <tr v-for="commande in filterCommandes" :key="commande">
                             <td class="commandes_td">{{ commande.num }}</td>
                             <td class="commandes_td">{{ commande.date_commande }}</td>
-                            <td class="commandes_td">{{ commande.etat }}</td>
+                            <td v-if="commande.etat=='livré'"><div class="state delivered">livré</div></td>
+                            <td v-if="commande.etat=='annulé'"><div class="state cancelled">annulé</div></td>
+                            <td v-if="commande.etat=='en attente'"><div class="state pending">en attente</div></td>
                             <td class="commandes_td">{{ commande.addresse }}</td>
                             <td class="commandes_td">{{ commande.telephone }}</td>
                             <td class="commandes_td">{{commande.total}}</td>
@@ -57,7 +59,6 @@ import LignesCommandeCompo from './LignesCommandeCompo.vue';
 export default {
     name: 'CommandesCompo',
     components: {LignesCommandeCompo},
-    props:["user"],
     data(){
         return {
             searchQuery: "",
@@ -163,7 +164,7 @@ export default {
             writeFile(wb, "download.xlsx");
         },
         setNumCommande(num){
-            this.numCommande=num;
+            this.numCommande=num;//pour avoir la commande à affiché
             $('.lignes_commande').addClass('show_lignes');
             $('main').addClass('fix_height');
         }

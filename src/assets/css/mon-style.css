@@ -127,4 +127,9 @@ img{
     margin-bottom: var(--mb-2);
     line-height: 140%;
 }
-
+.fix_height{
+    max-height: calc(100vh - 136px);
+}
+.vide{
+    height: calc(100vh - 136px);
+}

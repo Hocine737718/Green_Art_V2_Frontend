@@ -83,6 +83,7 @@ export default {
     },
     goSearch(){
         $('.search').addClass('show_search');
+        $('main').addClass('fix_height');    
     },
     refresh(){
         location.reload();

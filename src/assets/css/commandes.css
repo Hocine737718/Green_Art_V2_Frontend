@@ -154,6 +154,7 @@
     padding: .4rem 0;
     border-radius: 2rem;
     text-align: center;
+    width: 100px;
 }
 .state.delivered {
     background-color: #86e49d;
@@ -164,10 +165,7 @@
     color: #b30021;
 }
 .state.pending {
-    background-color: #ebc474;
-}
-.state.shipped {
-    background-color: #6fcaea;
+    background-color: #f5f838;
 }
 .commandes_th span.icon-arrow {
     display: inline-block;

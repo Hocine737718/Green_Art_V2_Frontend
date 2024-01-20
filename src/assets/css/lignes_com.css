@@ -7,7 +7,7 @@
     background-color: hsla(230, 75%, 15%, .1);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px); /* For safari */
-    padding: 5rem 1.5rem;
+    padding: 8rem 1.5rem;
     opacity: 0;
     pointer-events: none;
     transition: opacity .4s;
@@ -34,7 +34,7 @@
 .lignes_container{
     display: grid;
     background-color: var(--container-color);
-    padding: 2.5rem 0;
+    padding: 2rem 0;
     box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
     border-radius: 1rem;
     row-gap: 1.25rem;
@@ -108,7 +108,4 @@
 }
 .lignes_th:hover {
     color:var(--first-color);
-}
-.fix_height{
-    max-height: calc(100vh - 136px);
 }

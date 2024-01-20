@@ -1,7 +1,5 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
-import {loadImage, prixDA} from '@/assets/js/global.js';
-import { useAxios } from '@/assets/js/global';
+import {loadImage, prixDA, useAxios} from '@/assets/js/global.js';
 
 export default createStore({
   state: {
@@ -34,6 +32,7 @@ export default createStore({
       });
       state.produits = produits;
     },
+
     setCommandes(state, commandes) {
       commandes.forEach(comm => {
         comm.total=prixDA(comm.total);
@@ -43,6 +42,7 @@ export default createStore({
       });
       state.commandes = commandes;
     },
+
     setUser(state, user) {
       user.image=loadImage("clt",user.image);
 
@@ -54,18 +54,22 @@ export default createStore({
 
       state.user = user;
     },
+
     setPanier(state, panier) {
       panier.forEach((ligne)=>{
         ligne.image=loadImage("produits",ligne.image);
       });
       state.panier = panier;
     },
+
     supprimerDuPanier(state, id_produit) {
       state.panier = state.panier.filter(ligne=>ligne.id_produit!=id_produit);
     },
+
     search(state, s){
       state.searchQuery=s;
     },
+
     logout(){
       localStorage.removeItem('token');
     }
@@ -73,57 +77,61 @@ export default createStore({
 
   actions: {
     async getProduits(context){
-      try {
-        const data = new URLSearchParams();
-        data.append('get_produits', JSON.stringify({}));
-        const response = await axios.post(`${context.state.baseURL}/get_produits.php`, data);
-        
-        if(response.data.success) context.commit('setProduits', response.data.success);
-        else throw new Error(response.data.error);
-      } 
-      catch (error) {
-        console.error("Erreur Get Produits:", error);
+      const dataLabel="get_produits";
+      const dataContent=``;
+      const serverUrl=`${context.state.baseURL}/get_produits.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){
+        console.log("Produits -> ",res.msg);
+        context.commit('setProduits', res.data);
+      }
+      else{
+        console.error("Produits -> ",res.msg);
       }
     },
+
     async getCommandes(context){
-      try {
-        const data = new URLSearchParams();
-        data.append('get_commandes', JSON.stringify({ token:context.getters.token}));
-        const response = await axios.post(`${context.state.baseURL}/get_commandes.php`, data);
-
-        if(response.data.success) context.commit('setCommandes', response.data.success);
-        else throw new Error(response.data.error);
-      } 
-      catch (error) {
-        console.error("Erreur Get Commandes:", error);
+      const dataLabel="get_commandes";
+      const dataContent=`{"token":"${context.getters.token}"}`;
+      const serverUrl=`${context.state.baseURL}/get_commandes.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){
+        console.log("Commandes -> ",res.msg);
+        context.commit('setCommandes', res.data);
+      }
+      else{
+        console.error("Commandes -> ",res.msg);
       }
     },
+
     async getUser(context){
-      try {
-        const data = new URLSearchParams();
-        data.append('get_compte', JSON.stringify({ token:context.getters.token}));
-        const response = await axios.post(`${context.state.baseURL}/get_compte.php`, data);
+      const dataLabel="get_compte";
+      const dataContent=`{"token":"${context.getters.token}"}`;
+      const serverUrl=`${context.state.baseURL}/get_compte.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){
+        console.log("User -> ",res.msg);
+        context.commit('setUser', res.data);
+      }
+      else{
+        console.error("User -> ",res.msg);
+      }
+    },
 
-        if(response.data.success) context.commit('setUser', response.data.success);
-        else throw new Error(response.data.error);
-      } 
-      catch (error) {
-        console.error("Erreur Get User:", error);
-      }
-    },
     async getPanier(context){
-      try {
-        const data = new URLSearchParams();
-        data.append('get_panier', JSON.stringify({ token:context.getters.token}));
-        const response = await axios.post(`${context.state.baseURL}/get_panier.php`, data);
-        
-        if(response.data.success) context.commit('setPanier', response.data.success);
-        else throw new Error(response.data.error);
-      } 
-      catch (error) {
-        console.error("Erreur Get Panier:", error);
+      const dataLabel="get_panier";
+      const dataContent=`{"token":"${context.getters.token}"}`;
+      const serverUrl=`${context.state.baseURL}/get_panier.php`;
+      const res=await useAxios(dataLabel,dataContent,serverUrl);
+      if(!res.error){
+        console.log("Panier -> ",res.msg);
+        context.commit('setPanier', res.data);
+      }
+      else{
+        console.error("Panier -> ",res.msg);
       }
     },
+
     async login(context,{ email, mdp }){
       const dataLabel="login_email";
       const dataContent=`{
@@ -141,6 +149,7 @@ export default createStore({
         console.error("Login -> ",res.msg);
       }      
     },
+    
     async logout(context){
       const dataLabel="logout";
       const dataContent=`{

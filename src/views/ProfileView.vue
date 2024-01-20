@@ -56,7 +56,7 @@
 <script>
 import $ from 'jquery';
 import axios from 'axios';
-import {loadImage}  from '@/assets/js/global.js';
+import {loadImage, useAxios}  from '@/assets/js/global.js';
 import CommandesCompo from '@/components/Profile/CommandesCompo.vue';
 import EditMdpCompo from '@/components/Profile/EditMdpCompo.vue';
 export default {
@@ -80,31 +80,35 @@ export default {
     },
     methods:{
         async sauvegarder(){
-            try {
-                var data = new URLSearchParams();
-                this.user.token=this.token;
-                data.append('edit_profil', JSON.stringify(this.user));
-                var response = await axios.post(`${this.$store.state.baseURL}/edit_profil.php`, data);
-
-                if(response.data.success) console.log("success",response.data.success);
-                else throw new Error(response.data.error);
-                if(this.selected_img!=null){
-                    console.log("flg 02");
-                    data = new FormData();
-                    data.append('edit_image', `{"token":"${this.token}"}`);
-                    data.append('profile_img', this.selected_img);
-
-                    response = await axios.post(`${this.$store.state.baseURL}/edit_image.php`, data);
-
-                    if(response.data.success){
-                        console.log("success",JSON.stringify(response.data).success);
-                        this.user.image = loadImage('clt',response.data.profile_img);
-                    } 
-                    else throw new Error(response.data.error);
+            const dataLabel="edit_profil";
+            const dataContent=JSON.stringify(this.user);
+            const serverUrl=`${this.$store.state.baseURL}/edit_profil.php`;
+            const res=await useAxios(dataLabel,dataContent,serverUrl);
+            if(!res.error){
+                console.log("Edit Profil -> ",res.msg);
+                if(this.selected_img!=null)
+                {
+                    try
+                    {
+                        const data = new FormData();
+                        data.append('edit_image', `{"token":"${this.token}"}`);
+                        data.append('profile_img', this.selected_img);
+                        const response = await axios.post(`${this.$store.state.baseURL}/edit_image.php`, data);
+                        if(response.data.success)
+                        {
+                            console.log("Edit Image -> ",response.data.msg);
+                            this.user.image = loadImage('clt',response.data.content);
+                        } 
+                        else if(response.data.msg) throw new Error(response.data.msg);
+                        else throw new Error(response.data);
+                    }
+                    catch(error){
+                        console.error("Edit Image -> ",error);
+                    }
                 }
-            } 
-            catch (error) {
-                console.error(JSON.stringify(response.data).error);
+            }
+            else{
+                console.error("Edit Profil -> ",res.msg);
             }
         },
         async reset(){
@@ -143,7 +147,8 @@ export default {
             }
         },
         edit_mdp(){
-            $('.edit_mdp').addClass("show_edit_mdp");          
+            $('.edit_mdp').addClass("show_edit_mdp"); 
+            $('main').addClass('fix_height');         
         }
     },
 }
