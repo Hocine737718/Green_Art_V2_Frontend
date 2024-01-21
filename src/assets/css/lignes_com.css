@@ -40,10 +40,11 @@
     row-gap: 1.25rem;
     text-align: center;
     transform: translateY(-1rem);
+    grid-template-rows: 100px 1fr 100px;
 }
 .lignes_title{
     font-size: var(--h2-font-size);
-    color: var(--title-color);
+    color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +82,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    background-color: var(--first-color-light);
+    background-color: var(--first-color-lighten);
     cursor: pointer;
     text-transform: capitalize;
     font-size: 0.9rem;
@@ -108,4 +109,22 @@
 }
 .lignes_th:hover {
     color:var(--first-color);
+}
+.lignes_print{
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: center;
+}
+.lignes_print button{
+    display: flex;
+    width: 150px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--first-color-lighten);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
 }

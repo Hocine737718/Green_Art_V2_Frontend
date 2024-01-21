@@ -6,7 +6,7 @@
                 <table class="lignes_table">
                     <thead class="lignes_thead">
                         <tr>
-                            <th class="lignes_th">Num</th>
+                            <!--th class="lignes_th">Num</th-->
                             <th class="lignes_th">Titre</th>
                             <th class="lignes_th">Image</th>
                             <th class="lignes_th">Prix</th>
@@ -20,7 +20,7 @@
                         </tr>
                         <template v-else>
                             <tr v-for="ligne in this.lignes" :key="ligne.id">
-                                <td class="lignes_td">{{ ligne.num }}</td>
+                                <!--td class="lignes_td">{{ ligne.num }}</td-->
                                 <td class="lignes_td">{{ ligne.titre }}</td>
                                 <td class="lignes_td"><img :src="ligne.image" width="70px" height="70px" alt="image produit"></td>
                                 <td class="lignes_td">{{usePrixDA(ligne.prix)}}</td>
@@ -28,12 +28,18 @@
                                 <td class="lignes_td">{{usePrixDA(ligne.total)}}</td>
                             </tr>
                             <tr>
-                                <td class="lignes_td" style="text-align: right;width:100%;" colspan="5">Total</td>
+                                <td class="lignes_td" style="text-align: right;width:100%;" colspan="4">Total</td>
                                 <td class="lignes_td">{{total()}}</td>
                             </tr>
                         </template>
                     </tbody>
                 </table>
+            </div>
+            <div class="lignes_print">
+                <button>
+                    <i class="ri-printer-fill"></i>
+                    Imprimer
+                </button>
             </div>
         </div>
         <i class="ri-close-line lignes_close" @click="close()" id="lignes-close"></i>

@@ -14,7 +14,7 @@
     align-items: center;
 }
 .commandes_header .input-group {
-    width: 35%;
+    width: 45%;
     height: 100%;
     padding: 0 .8rem;
     border-radius: 2rem;
@@ -24,7 +24,7 @@
     transition: .2s;
 }
 .commandes_header .input-group:hover {
-    width: 45%;
+    width: 50%;
     box-shadow: 0 .1rem .4rem #0002;
 }
 .commandes_header .input-group i {
@@ -35,7 +35,7 @@
 }
 .commandes_header .input-group input {
     width: 100%;
-    padding: 0 .5rem 0 .3rem;
+    padding: 0.5rem 0 .3rem;
     background-color: transparent;
     border: none;
     outline: none;
@@ -47,66 +47,11 @@
     width: 1.2rem;
     height: 1.2rem;
 }
-.export_file {
-    position: relative;
-}
-.export_file .export_file-btn {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background: url(../../assets/img/icons/export.png) center / 80% no-repeat;
-    border-radius: 50%;
-    transition: .2s ease-in-out;
-}
-.export_file .export_file-btn:hover { 
-    background-color: var(--first-color-light);
-    transform: scale(1.15);
-    cursor: pointer;
-}
-.export_file input {
-    display: none;
-}
-.export_file .export_file-options {
-    position: absolute;
-    right: 0;   
-    width: 12rem;
-    border-radius: .5rem;
-    text-align: center;
-    transform: scale(.8);
-    transform-origin: top right;
-    box-shadow: 0 .2rem .5rem #0004;
-    transition: .2s;
-    display: none;
-}
-.export_file input:checked + .export_file-options {
-    display: block;
-    transform: scale(1);
-    z-index: 100;
-}
-.export_file .export_file-options label{
-    display: block;
-    width: 100%;
-    padding: .6rem 0;
-    background-color: #f2f2f2;   
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: .2s ease-in-out;
-}
-.export_file .export_file-options label:hover{
-    transform: scale(1.05);
-    background-color: #fff;
-    cursor: pointer;
-}
-.export_file .export_file-options img{
-    width: 2rem;
-    height: auto;
-}
 .commandes_body {
     width: 95%;
     max-height: calc(89% - 1.6rem);
     background-color: #fff4;
-    margin: .8rem auto;
+    margin: 0rem auto;
     border-radius: .6rem;
     overflow: overlay;
 }

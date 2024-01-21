@@ -85,6 +85,9 @@
     .cart_th {
         min-width: 85px;
     }
+    .profile_button {
+        padding: 0.75rem;
+    }
 }
 @media (max-width: 669px){
     .product{
@@ -95,6 +98,10 @@
     }
     .product_description {
         padding: 0 5rem;
+    }
+    .lignes_print button{
+        width: 130px;
+        font-size: 1rem;
     }
 }
 @media (max-width: 639px){
@@ -208,6 +215,12 @@
     .profile_mdp span{
         font-size: small;
     }
+    .commandes_header .input-group {
+        width: 40%;
+    }
+    .commandes_header .input-group:hover {
+        width: 45%;
+    }    
 }
 @media (max-width: 415px){
     :root {
@@ -319,6 +332,7 @@
     }
     .profile_button{
         padding: 0.25rem;
+        font-size: 0.8rem;
     }
     .profile_photo {
         padding-top: 0px;
@@ -331,23 +345,18 @@
         margin-right: 2.5rem;
     }
     .commandes_header{
-        display: grid;
-        grid-template-columns: 80% 20%;
+        flex-direction: column;
     }
     .commandes_header h2{
         order: 0;
     }
-    .commandes_header .export_file{
-        order: 1;
-        text-align: right;
-    }
     .commandes_header .input-group{
-        order: 2;
+        order: 1;
         width: 85%;
-        margin-left: 15%;
+        margin-top: 5px;
     }
     .commandes_header .input-group:hover{
-        width: 85%;
+        width: 100%;
     }
     .login_google button {
         width: 70%;

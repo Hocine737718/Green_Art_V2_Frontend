@@ -7,14 +7,6 @@
                     <input type="search" placeholder="Rechercher..." v-model="this.searchQuery">
                     <i class='ri-search-line'></i>
                 </div>
-                <div class="export_file">
-                    <label for="export-file" class="export_file-btn" title="Export"></label>
-                    <input type="checkbox" id="export-file">
-                    <div class="export_file-options">
-                        <label for="export-file" @click="toPDF()">PDF <img src="../../assets/img/icons/pdf.png" alt=""></label>
-                        <label for="export-file"  @click="toExcel()">EXCEL <img src="../../assets/img/icons/excel.png" alt=""></label>
-                    </div>
-                </div>
             </div>
             <div class="commandes_body">
                 <table class="commandes_table">
@@ -54,7 +46,6 @@
 
 <script>
 import $ from 'jquery';
-import {utils,writeFile} from 'xlsx';
 import LignesCommandeCompo from './LignesCommandeCompo.vue';
 export default {
     name: 'CommandesCompo',
@@ -127,41 +118,6 @@ export default {
                 });
                 head.classList.toggle('desc', this.sortOrder==="desc" );
             }
-        },
-        toPDF(){
-            const lien="http://localhost:80/server/Djennat_Green_Art/v2/front-end/src/assets/css/";//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            const html_code = `
-                <!DOCTYPE html>
-                    <link rel="stylesheet" type="text/css" href="${lien}mon-style.css">
-                    <link rel="stylesheet" type="text/css" href="${lien}commandes.css">
-                    <style>
-                        .commandes_header .input-group,
-                        .commandes_header .export_file,
-                        .commandes_th span.icon-arrow, 
-                        th:last-child, 
-                        td:last-child{
-                            display:none;
-                        }
-                    </style>
-                    <main  class="main">
-                        <section class="commandes section container" id="commandes">${document.querySelector('#commandes').innerHTML}</secton>
-                    </main`;
-            const new_window = window.open();
-            new_window.document.write(html_code);
-            setTimeout(() => {
-                new_window.print();
-                new_window.close();
-            }, 400);
-        },
-        toExcel() {
-            var data = [this.headers];
-            this.commandes.forEach(commande => {
-                data.push([commande.num,commande.date_commande,commande.etat,commande.addresse,commande.telephone,commande.total+".00 DA"])
-            });
-            var wb = utils.book_new();
-            wb.SheetNames.push("Votre Commandes");
-            wb.Sheets["Votre Commandes"] = utils.aoa_to_sheet(data);
-            writeFile(wb, "download.xlsx");
         },
         setNumCommande(num){
             this.numCommande=num;//pour avoir la commande à affiché
