@@ -9,4 +9,11 @@ module.exports = defineConfig({
       },
     },
   }
-})
+});
+module.exports = {
+  configureWebpack: {
+    performance: {
+      hints: false // Désactive les avertissements de performance
+    }
+  }
+};

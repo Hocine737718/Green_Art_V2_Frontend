@@ -3,7 +3,8 @@ import {loadImage, prixDA, useAxios} from '@/assets/js/global.js';
 
 export default createStore({
   state: {
-    baseURL: "http://localhost:80/server/Djennat_Green_Art/v2/php",
+    //baseURL: "http://localhost:80/server/Djennat_Green_Art/v2/php",
+    baseURL: "https://green-art-php.000webhostapp.com/php",
     produits:[],
     commandes:[],
     user:{image:loadImage("clt",null)},
