@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../public/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <title>Djennat Green Art</title>
+</head>
+<body>
+    <script>
+        function t(){
+            const lien="http://localhost:80/server/Djennat_Green_Art/v2/front-end/src/assets/css/";//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            const html_code = `
+                <!DOCTYPE html>
+                    <link rel="stylesheet" type="text/css" href="${lien}mon-style.css">
+                    <link rel="stylesheet" type="text/css" href="${lien}lignes_com.css">
+                    <main  class="main">
+                        <div class="lignes_commande show_lignes">${document.querySelector('#lignes_commande').innerHTML}</div>
+                    </main`;
+            const new_window = window.open();
+            new_window.document.write(html_code);
+            setTimeout(() => {
+                new_window.print();
+                new_window.close();
+            }, 400);
+        }
+    </script>
+</body>
+</html>

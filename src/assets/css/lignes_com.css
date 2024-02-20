@@ -113,7 +113,7 @@
 .lignes_print{
     display: flex;
     width: 100%;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
 }
 .lignes_print button{

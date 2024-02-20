@@ -1,0 +1,11 @@
+body{
+    margin: 0px;
+    background-image: none;
+}
+body, .lignes_container{
+    background-color: white;
+}
+body i,.lignes_print
+{
+    display: none;
+}

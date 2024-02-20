@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^1.6.3",
     "core-js": "^3.8.3",
+    "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
+    "jspdf": "^2.5.1",
     "oidc-client": "^1.11.5",
     "scrollreveal": "^4.0.9",
     "sweetalert2": "^11.10.3",
